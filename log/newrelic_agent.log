@@ -733,3 +733,98 @@
 [02/05/15 22:38:33 +0100 paco (15816)] INFO : Doing deferred dependency-detection before Rack startup
 [02/05/15 22:38:43 +0100 paco (15816)] ERROR : Invalid license key, please contact support@newrelic.com
 [02/05/15 22:38:43 +0100 paco (15816)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Starting the New Relic agent in "development" environment.
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[02/05/15 23:03:24 +0100 paco (17675)] WARN : No configuration file found. Working directory = /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie
+[02/05/15 23:03:24 +0100 paco (17675)] WARN : Looked in these locations (based on defaults): /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/config/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/config/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/newrelic.yml, /home/paco/.newrelic/newrelic.yml, /home/paco/newrelic.yml
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Environment: development
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Dispatcher: unicorn
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Application: development
+[02/05/15 23:03:24 +0100 paco (17675)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'.
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Installing Net instrumentation
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Installing Rails 3+ middleware instrumentation
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Installing deferred Rack instrumentation
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Installing Rack::Builder middleware instrumentation
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Installing Rails 4 Error instrumentation
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Installing Rails 4 Controller instrumentation
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Installing Rails 4 view instrumentation
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Finished instrumentation
+[02/05/15 23:03:24 +0100 paco (17675)] INFO : Doing deferred dependency-detection before Rack startup
+[02/05/15 23:03:51 +0100 paco (17675)] ERROR : Invalid license key, please contact support@newrelic.com
+[02/05/15 23:03:51 +0100 paco (17675)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Starting the New Relic agent in "development" environment.
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[02/05/15 23:15:07 +0100 paco (17973)] WARN : No configuration file found. Working directory = /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie
+[02/05/15 23:15:07 +0100 paco (17973)] WARN : Looked in these locations (based on defaults): /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/config/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/config/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/newrelic.yml, /home/paco/.newrelic/newrelic.yml, /home/paco/newrelic.yml
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Environment: development
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Dispatcher: unicorn
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Application: development
+[02/05/15 23:15:07 +0100 paco (17973)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'.
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Installing Net instrumentation
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Installing Rails 3+ middleware instrumentation
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Installing deferred Rack instrumentation
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Installing Rack::Builder middleware instrumentation
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Installing Rails 4 Error instrumentation
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Installing Rails 4 Controller instrumentation
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Installing Rails 4 view instrumentation
+[02/05/15 23:15:07 +0100 paco (17973)] INFO : Finished instrumentation
+[02/05/15 23:15:08 +0100 paco (17973)] INFO : Doing deferred dependency-detection before Rack startup
+[02/05/15 23:15:19 +0100 paco (17973)] ERROR : Invalid license key, please contact support@newrelic.com
+[02/05/15 23:15:19 +0100 paco (17973)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Starting the New Relic agent in "development" environment.
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[02/05/15 23:18:58 +0100 paco (18022)] WARN : No configuration file found. Working directory = /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie
+[02/05/15 23:18:58 +0100 paco (18022)] WARN : Looked in these locations (based on defaults): /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/config/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/config/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/newrelic.yml, /home/paco/.newrelic/newrelic.yml, /home/paco/newrelic.yml
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Environment: development
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Dispatcher: unicorn
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Application: development
+[02/05/15 23:18:58 +0100 paco (18022)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'.
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Installing Net instrumentation
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Installing Rails 3+ middleware instrumentation
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Installing deferred Rack instrumentation
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Installing Rack::Builder middleware instrumentation
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Installing Rails 4 Error instrumentation
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Installing Rails 4 Controller instrumentation
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Installing Rails 4 view instrumentation
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Finished instrumentation
+[02/05/15 23:18:58 +0100 paco (18022)] INFO : Doing deferred dependency-detection before Rack startup
+[02/05/15 23:19:00 +0100 paco (18022)] ERROR : Invalid license key, please contact support@newrelic.com
+[02/05/15 23:19:00 +0100 paco (18022)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Starting the New Relic agent in "development" environment.
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[02/19/15 22:28:23 +0100 paco (2761)] WARN : No configuration file found. Working directory = /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie
+[02/19/15 22:28:23 +0100 paco (2761)] WARN : Looked in these locations (based on defaults): /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/config/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/config/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/newrelic.yml, /home/paco/.newrelic/newrelic.yml, /home/paco/newrelic.yml
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Environment: development
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Dispatcher: unicorn
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Application: development
+[02/19/15 22:28:23 +0100 paco (2761)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'.
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Installing Net instrumentation
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Installing Rails 3+ middleware instrumentation
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Installing deferred Rack instrumentation
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Installing Rack::Builder middleware instrumentation
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Installing Rails 4 Error instrumentation
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Installing Rails 4 Controller instrumentation
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Installing Rails 4 view instrumentation
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Finished instrumentation
+[02/19/15 22:28:23 +0100 paco (2761)] INFO : Doing deferred dependency-detection before Rack startup
+[02/19/15 22:29:13 +0100 paco (2761)] ERROR : Invalid license key, please contact support@newrelic.com
+[02/19/15 22:29:13 +0100 paco (2761)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Starting the New Relic agent in "development" environment.
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[02/19/15 22:44:09 +0100 paco (3432)] WARN : No configuration file found. Working directory = /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie
+[02/19/15 22:44:09 +0100 paco (3432)] WARN : Looked in these locations (based on defaults): /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/config/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/config/newrelic.yml, /home/paco/Documentos/LIBROS_PELICULAS/PORTAL/bookbecomesmovie/newrelic.yml, /home/paco/.newrelic/newrelic.yml, /home/paco/newrelic.yml
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Environment: development
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Dispatcher: unicorn
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Application: development
+[02/19/15 22:44:09 +0100 paco (3432)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'.
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Installing Net instrumentation
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Installing Rails 3+ middleware instrumentation
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Installing deferred Rack instrumentation
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Installing Rack::Builder middleware instrumentation
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Installing Rails 4 Error instrumentation
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Installing Rails 4 Controller instrumentation
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Installing Rails 4 view instrumentation
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Finished instrumentation
+[02/19/15 22:44:09 +0100 paco (3432)] INFO : Doing deferred dependency-detection before Rack startup
+[02/19/15 22:44:41 +0100 paco (3432)] ERROR : Invalid license key, please contact support@newrelic.com
+[02/19/15 22:44:41 +0100 paco (3432)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
