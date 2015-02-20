@@ -12,7 +12,13 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @book.authors.name %>
+   
+		<% @book.authors.each do |author| %>
+		      <tr>
+		        <td><%= author.name %></td>
+		        <td><%= author.date %></td>
+		      </tr>
+		<% end %>
 </p>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
