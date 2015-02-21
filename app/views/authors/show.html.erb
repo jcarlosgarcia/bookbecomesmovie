@@ -83,7 +83,10 @@
 <p>
   <strong>Biography:</strong>
   <%= @author.bio %> <br><br>
-  <%= @author.bio["value"] %>
+  <%if @author.bio
+  %>     <%= @author.bio["value"] %>
+  <%end
+  %>
 </p>
 
 

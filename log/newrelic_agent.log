@@ -866,3 +866,4 @@
 [02/20/15 20:46:46 +0100 paco (4130)] INFO : Doing deferred dependency-detection before Rack startup
 [02/20/15 20:46:56 +0100 paco (4130)] ERROR : Invalid license key, please contact support@newrelic.com
 [02/20/15 20:46:56 +0100 paco (4130)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[02/21/15 01:28:12 +0100 paco (4130)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: undefined method `[]' for nil:NilClass
