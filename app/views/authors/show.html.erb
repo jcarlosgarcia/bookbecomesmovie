@@ -6,8 +6,84 @@
 </p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @author.date %>
+  <strong>Alternate names:</strong>
+   	<table>
+		<%if @author.alternate_names
+			@author.alternate_names.each do |alternate_name| %>
+		      <tr>
+		        <td><%= alternate_name%></td>
+		      </tr>
+		<%   end 
+		  end
+		%>
+	</table>
+</p>
+
+<p>
+  <strong>Birth date:</strong>
+  <%= @author.birth_date %>
+</p>
+
+<p>
+  <strong>Death date:</strong>
+  <%= @author.death_date %>
+</p>
+
+<p>
+  <strong>Fuller name:</strong>
+  <%= @author.fuller_name %>
+</p>
+
+<p>
+  <strong>Death date:</strong>
+  <%= @author.death_date %>
+</p>
+
+<p>
+  <strong>Links:</strong>
+   	<table>
+		<%if @author.links
+			 @author.links.each do |link| %>
+			      <tr>
+			        <td><a href="<%= link["url"] %>" target="blank"><%= link["title"]%></a></td>
+			      </tr>
+		<%   end 
+		  end%>
+	</table>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @author.location %>
+</p>
+
+<p>
+  <strong>Publishers:</strong>
+   	<table>
+		<%if @author.publishers
+			 @author.publishers.each do |publisher| %>
+			      <tr>
+			        <td><%= publisher%></td>
+			      </tr>
+		<%   end 
+		  end%>
+	</table>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @author.website %>
+</p>
+
+<p>
+  <strong>Wikipedia:</strong>
+  <%= @author.wikipedia %>
+</p>
+
+<p>
+  <strong>Biography:</strong>
+  <%= @author.bio %> <br><br>
+  <%= @author.bio["value"] %>
 </p>
 
 

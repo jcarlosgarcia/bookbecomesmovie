@@ -4,8 +4,8 @@ class Book
   field :title, type: String
   field :subtitle, type: String
   field :descriptiontext, type: String
-  field :subjects: Array
+  field :subjects, type: Array
   field :links, type: Array
-  field :subject_places: Array
-  field :subject_times: Array  
+  field :subject_places, type: Array
+  field :subject_times, type: Array  
 end
