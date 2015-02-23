@@ -39,26 +39,19 @@ a:hover {
 
 p a {
     color:#fff !important;
+    border-color: #fff !important;
+    border-bottom-style:solid !important;
     padding-bottom:1px;
     border-bottom:1px dotted rgba(255,255,255,0.4);
     font-family: 'open_sansregular', sans-serif;
 }
 p a:hover {
-    border-color:#fff;
-    color:#000000 !important;
-    /*border-color:rgba(255,255,255,1) !important; */
+    color: #000 !important;
+    background-color: transparent; !important; 
+    border-color: #000 !important;
+
 }
 
-p a:visited {
-    border-color:#fff !important;
-    color:#fff !important;
-    border-color:rgba(255,255,255,1);
-}
-
-p a:active {
-    border-color:#fff !important;
-    border-color:rgba(255,255,255,1);
-}
 
 strong {
     font-family: 'open_sansbold', sans-serif;
