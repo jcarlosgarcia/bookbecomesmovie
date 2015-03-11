@@ -25,15 +25,25 @@
                  <section class="grid row clearfix clearfix-for-2cols">
 
                  	   <!-- grid item -->
-	                  <div class="grid-item col-md-12">
-	                    <div class="item-content clearfix">
+                 	  <% if @book.image %>
+	                      		
+	                      		<div class="grid-item col-md-12">
+				                    <div class="item-content clearfix">    
+				                      <span class="icon glyphicon glyphicon-picture"></span>     
+				                      <div class="text-content">
+				                        
+				                        <p>
+				                        	<img class="medium-width" src="<%= @book.image %>" />
+				                        </p>
+				                      </div>
+				                    </div><!-- end: .item-content -->
+				                </div><!-- end: .grid-item -->
 
-	                      <% if @book.image %>
-	                      		<span class="col-md-6 icon glyphicon image"><img class="medium-width" src="<%= @book.image %>" /></span>
-	                      <% else %>
-	                      		<span class="icon glyphicon glyphicon-file"></span>
-	                      <% end %>
-	                      
+	                  <% end %>
+
+	                  <div class="grid-item col-md-12">
+	                    <div class="item-content clearfix">    
+	                      <span class="icon glyphicon glyphicon-book"></span>     
 	                      <div class="text-content">
 	                        <h5>
 	                        	<% if @book.title %>	
@@ -52,7 +62,7 @@
 	                  <% if @book.authors %>	
 
 	                 	   <!-- grid item -->
-		                  <div class="grid-item col-md-12">
+		                  <div class="grid-item col-md-6">
 		                    <div class="item-content clearfix">
 		                      <span class="icon glyphicon glyphicon-user"></span>
 		                      <div class="text-content">
@@ -70,7 +80,7 @@
 	                 
 		              <% if @book.links	%>
 
-	                      <div class="grid-item col-md-12">
+	                      <div class="grid-item col-md-6">
 		                    <div class="item-content clearfix">
 		                      <span class="icon glyphicon glyphicon-eye-open"></span>
 		                      <div class="text-content">
@@ -91,7 +101,7 @@
 		              <% if @book.subjects %>
 
 			                  <!-- grid item -->
-			                  <div class="grid-item col-md-12">
+			                  <div class="grid-item col-md-6">
 			                    <div class="item-content clearfix">
 			                      <span class="icon glyphicon glyphicon-tags"></span>
 			                      <div class="text-content">
@@ -111,7 +121,7 @@
 	                  <% if @book.subject_places %>
 
 			                  <!-- grid item -->
-			                  <div class="grid-item col-md-12">
+			                  <div class="grid-item col-md-6">
 			                    <div class="item-content clearfix">
 			                      <span class="icon glyphicon glyphicon-tree-deciduous"></span>
 			                      <div class="text-content">
@@ -130,7 +140,7 @@
 	                   <% if @book.subject_times %>
 
 			                  <!-- grid item -->
-			                  <div class="grid-item col-md-12">
+			                  <div class="grid-item col-md-6">
 			                    <div class="item-content clearfix">
 			                      <span class="icon glyphicon glyphicon-time"></span>
 			                      <div class="text-content">

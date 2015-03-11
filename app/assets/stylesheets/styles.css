@@ -1813,7 +1813,7 @@ img.full-width {
 }
 
 img.medium-width { 
-    max-width:60% !important;
+    max-width:30% !important;
     box-sizing: border-box !important;
     margin-left:auto;
     margin-right:auto;
