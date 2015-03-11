@@ -1,111 +1,160 @@
+
+
+<!-- Left Sidebar -->
+<section id="left-sidebar">
+
+<div class="logo">
+  <a href="#intro" class="link-scroll"><img src="/assets/other_images/logo.png" alt="Twilli Air"></a>
+</div><!-- .logo -->
+
+<!-- Menu Icon for smaller viewports -->
+<div id="mobile-menu-icon" class="visible-xs" onClick="toggle_main_menu();"><span class="glyphicon glyphicon-th"></span></div>
+
 <p id="notice"><%= notice %></p>
 
-<%if @book.title 
-%>	
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-<%   
-end
-%>
-
-<%if @book.descriptiontext 
-%>	
-<p>
-  <strong>Description:</strong>
-  <%= @book.descriptiontext %>
-</p>
-<%   
-end
-%>
-
-<%if @book.authors 
-%>	
-	<p>
-	  <strong>Author:</strong>
-	  <table>
-			
-			<% @book.authors.each do |author| %>
-			      <tr>
-			        <td><%= author.name %></td>
-			      </tr>
-			<% end %>
-	  </table>
-	</p>
-<%   
-end
-%>
-
-<% if @book.links
-%>	
-	<p>
-	  <strong>Links:</strong>
-	   	<table>
-	   			<% @book.links.each do |link| %>
-				      <tr>
-				        <td><a href="<%= link["url"] %>" target="blank"><%= link["title"]%></a></td>
-				      </tr>
-			    <% end %>
-		</table>
-	</p>
-<%   
-end
-%>
+</section><!-- #left-sidebar -->
 
 
-<% if @book.subjects
-%>
-	<p>
-	  <strong>Subjects:</strong>
-	   	<table>
-			  <% @book.subjects.each do |subject| %>
-				      <tr>
-				        <td><%= subject%></td>
-				      </tr>
-			  <% end %>
-		</table>
-	</p>
-<%   
-end
-%>
+<section id="main-content" class="clearfix">
+        
+        <article id="intro" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg5.jpg">
+
+           <div class="content-wrapper clearfix">
+            <div class="col-sm-11 col-md-10 pull-right">
+
+                 <section class="grid row clearfix clearfix-for-2cols">
+
+                 	   <!-- grid item -->
+	                  <div class="grid-item col-md-12">
+	                    <div class="item-content clearfix">
+
+	                      <% if @book.image %>
+	                      		<span class="col-md-6 icon glyphicon image"><img class="medium-width" src="<%= @book.image %>" /></span>
+	                      <% else %>
+	                      		<span class="icon glyphicon glyphicon-file"></span>
+	                      <% end %>
+	                      
+	                      <div class="text-content">
+	                        <h5>
+	                        	<% if @book.title %>	
+								  <%= @book.title %>
+								<% end %>
+	                        </h5>
+	                        <p>
+	                        	<% if @book.descriptiontext  %>	
+								  <%= @book.descriptiontext.html_safe %>
+								<% end %>
+	                        </p>
+	                      </div>
+	                    </div><!-- end: .item-content -->
+	                  </div><!-- end: .grid-item -->
+
+	                  <% if @book.authors %>	
+
+	                 	   <!-- grid item -->
+		                  <div class="grid-item col-md-12">
+		                    <div class="item-content clearfix">
+		                      <span class="icon glyphicon glyphicon-user"></span>
+		                      <div class="text-content">
+		                        <h5>Author:</h5>
+		                        
+		                            <% @book.authors.each do |author| %>
+									      <p><%= author.name %></p>
+									<% end %>
+
+		                      </div>
+		                    </div><!-- end: .item-content -->
+		                  </div><!-- end: .grid-item -->
+
+		              <% end %>
+	                 
+		              <% if @book.links	%>
+
+	                      <div class="grid-item col-md-12">
+		                    <div class="item-content clearfix">
+		                      <span class="icon glyphicon glyphicon-eye-open"></span>
+		                      <div class="text-content">
+		                        <h5>Links:</h5>
+		                        <p>
+		                        	<% @book.links.each do |link| %>
+									      <tr>
+									        <td><a href="<%= link["url"] %>" target="blank"><%= link["title"]%></a></td>
+									      </tr>
+								    <% end %>
+		                        </p>
+		                      </div>
+		                    </div><!-- end: .item-content -->
+		                  </div><!-- end: .grid-item -->
+
+		              <% end %>
+
+		              <% if @book.subjects %>
+
+			                  <!-- grid item -->
+			                  <div class="grid-item col-md-12">
+			                    <div class="item-content clearfix">
+			                      <span class="icon glyphicon glyphicon-tags"></span>
+			                      <div class="text-content">
+			                        <h5>Subjects:</h5>
+			                       
+			                        	<% @book.subjects.each do |subject| %>
+											      <p><%= subject%></p>
+										<% end %>
+
+			                      </div>
+			                    </div><!-- end: .item-content -->
+			                  </div><!-- end: .grid-item -->
+
+	                  <% end %>
 
 
-<% if @book.subject_places
-%>
-	<p>
-	  <strong>Subject places:</strong>
-	   	<table>
-	   		<% @book.subject_places.each do |subjectp| %>
-			      <tr>
-			        <td><%= subjectp%></td>
-			      </tr>
-			<% end %>
-			
-		</table>
-	</p>
-<%   
-end
-%>
+	                  <% if @book.subject_places %>
 
+			                  <!-- grid item -->
+			                  <div class="grid-item col-md-12">
+			                    <div class="item-content clearfix">
+			                      <span class="icon glyphicon glyphicon-tree-deciduous"></span>
+			                      <div class="text-content">
+			                        <h5>Subject places:</h5>
+			                       
+			                        	<% @book.subject_places.each do |subjectp| %>
+											      <p><%= subjectp%></p>
+										<% end %>
 
-<%  if @book.subject_times
-%>
+			                      </div>
+			                    </div><!-- end: .item-content -->
+			                  </div><!-- end: .grid-item -->
 
-<p>
-  <strong>Subject times:</strong>
-   	<table>		
-		<% @book.subject_times.each do |subjectt| %>
-		      <tr>
-		        <td><%= subjectt%></td>
-		      </tr>
-		<% end %>
-	</table>
-</p>
+	                  <% end %>
 
-<%   
-end
-%>
+	                   <% if @book.subject_times %>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+			                  <!-- grid item -->
+			                  <div class="grid-item col-md-12">
+			                    <div class="item-content clearfix">
+			                      <span class="icon glyphicon glyphicon-time"></span>
+			                      <div class="text-content">
+			                        <h5>Subject times:</h5>
+			                       
+			                        	<% @book.subject_times.each do |subjectt| %>
+											      <p><%= subjectt%></p>
+										<% end %>
+
+			                      </div>
+			                    </div><!-- end: .item-content -->
+			                  </div><!-- end: .grid-item -->
+
+	                  <% end %>
+
+					
+
+					<%= link_to 'Edit', edit_book_path(@book) %> |
+					<%= link_to 'Back', books_path %>
+
+				 </section>
+
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+</section>        
+

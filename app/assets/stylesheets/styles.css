@@ -1812,6 +1812,13 @@ img.full-width {
     height: auto !important;
 }
 
+img.medium-width { 
+    max-width:60% !important;
+    box-sizing: border-box !important;
+    margin-left:auto;
+    margin-right:auto;
+}
+
     @media (min-width: 768px) { 
         img.pull-left,
         img.pull-right {
@@ -1840,3 +1847,4 @@ img.full-width {
     }
     @media (min-width: 1200px) {  
     }
+
