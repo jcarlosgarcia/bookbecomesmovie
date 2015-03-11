@@ -4,6 +4,7 @@ class Book
   field :title, type: String
   field :subtitle, type: String
   field :descriptiontext, type: String
+  field :image, type: String
   field :subjects, type: Array
   field :links, type: Array
   field :subject_places, type: Array
