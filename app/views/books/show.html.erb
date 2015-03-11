@@ -1,83 +1,111 @@
 <p id="notice"><%= notice %></p>
 
+<%if @book.title 
+%>	
 <p>
   <strong>Title:</strong>
   <%= @book.title %>
 </p>
+<%   
+end
+%>
 
+<%if @book.descriptiontext 
+%>	
 <p>
   <strong>Description:</strong>
   <%= @book.descriptiontext %>
 </p>
+<%   
+end
+%>
 
-<p>
-  <strong>Author:</strong>
-  <table>
-		<%if @book.authors 
-			@book.authors.each do |author| %>
-		      <tr>
-		        <td><%= author.name %></td>
-		      </tr>
-		<% 
-			end 
-		 end%>
-  </table>
-</p>
-
-<p>
-  <strong>Links:</strong>
-   	<table>
-		<%if @book.links
-			 @book.links.each do |link| %>
+<%if @book.authors 
+%>	
+	<p>
+	  <strong>Author:</strong>
+	  <table>
+			
+			<% @book.authors.each do |author| %>
 			      <tr>
-			        <td><a href="<%= link["url"] %>" target="blank"><%= link["title"]%></a></td>
+			        <td><%= author.name %></td>
 			      </tr>
-		<%   end 
-		  end%>
-	</table>
-</p>
+			<% end %>
+	  </table>
+	</p>
+<%   
+end
+%>
 
-<p>
-  <strong>Subjects:</strong>
-   	<table>
-		<% if @book.subjects
-			  @book.subjects.each do |subject| %>
+<% if @book.links
+%>	
+	<p>
+	  <strong>Links:</strong>
+	   	<table>
+	   			<% @book.links.each do |link| %>
+				      <tr>
+				        <td><a href="<%= link["url"] %>" target="blank"><%= link["title"]%></a></td>
+				      </tr>
+			    <% end %>
+		</table>
+	</p>
+<%   
+end
+%>
+
+
+<% if @book.subjects
+%>
+	<p>
+	  <strong>Subjects:</strong>
+	   	<table>
+			  <% @book.subjects.each do |subject| %>
+				      <tr>
+				        <td><%= subject%></td>
+				      </tr>
+			  <% end %>
+		</table>
+	</p>
+<%   
+end
+%>
+
+
+<% if @book.subject_places
+%>
+	<p>
+	  <strong>Subject places:</strong>
+	   	<table>
+	   		<% @book.subject_places.each do |subjectp| %>
 			      <tr>
-			        <td><%= subject%></td>
+			        <td><%= subjectp%></td>
 			      </tr>
-		  <%  end 
-		   end
-		%>
-	</table>
-</p>
+			<% end %>
+			
+		</table>
+	</p>
+<%   
+end
+%>
 
-<p>
-  <strong>Subject places:</strong>
-   	<table>
-		<%if @book.subject_places
-			@book.subject_places.each do |subjectp| %>
-		      <tr>
-		        <td><%= subjectp%></td>
-		      </tr>
-		<%   end 
-		  end
-		%>
-	</table>
-</p>
+
+<%  if @book.subject_times
+%>
 
 <p>
   <strong>Subject times:</strong>
-   	<table>
-		<% 
-		if @book.subject_times
-			@book.subject_times.each do |subjectt| %>
+   	<table>		
+		<% @book.subject_times.each do |subjectt| %>
 		      <tr>
 		        <td><%= subjectt%></td>
 		      </tr>
-		<% end 
-		end%>
+		<% end %>
 	</table>
 </p>
+
+<%   
+end
+%>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
