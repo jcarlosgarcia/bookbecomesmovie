@@ -1273,6 +1273,7 @@ h6 {
         }
         .form-style textarea {
             height:195px;
+            width:100%;
         }  
     }
     @media (min-width: 1200px) {  
