@@ -10,6 +10,12 @@
 <!-- Menu Icon for smaller viewports -->
 <div id="mobile-menu-icon" class="visible-xs" onClick="toggle_main_menu();"><span class="glyphicon glyphicon-th"></span></div>
 
+<ul id="main-menu">
+          <li id="menu-item-becomemovie" class="menu-item scroll"><a href="#becomemovie">I like this book!, i want to watch this film</a></li>
+          <li id="menu-item-datamovie" class="menu-item scroll"><a href="#datamovie">Are we missing data for this book?</a></li>
+          <li id="" class="menu-item scroll"><a href="#">Find more books</a></li>
+</ul><!-- #main-menu -->
+
 <p id="notice"><%= notice %></p>
 
 </section><!-- #left-sidebar -->
@@ -20,6 +26,13 @@
         <article id="intro" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg5.jpg">
 
            <div class="content-wrapper clearfix">
+
+           	<h2 class="text-center">
+           		<% if @book.title %>	
+				  <%= @book.title %>
+				<% end %>
+           	</h2>
+
             <div class="col-sm-11 col-md-10 pull-right">
 
                  <section class="grid row clearfix clearfix-for-2cols">
@@ -46,9 +59,7 @@
 	                      <span class="icon glyphicon glyphicon-book"></span>     
 	                      <div class="text-content">
 	                        <h5>
-	                        	<% if @book.title %>	
-								  <%= @book.title %>
-								<% end %>
+	                        	Summary:
 	                        </h5>
 	                        <p>
 	                        	<% if @book.descriptiontext  %>	
@@ -143,7 +154,7 @@
 			                  <div class="grid-item col-md-6">
 			                    <div class="item-content clearfix">
 			                      <span class="icon glyphicon glyphicon-time"></span>
-			                      <div class="text-content">
+			                       <div class="text-content">
 			                        <h5>Subject times:</h5>
 			                       
 			                        	<% @book.subject_times.each do |subjectt| %>
@@ -156,15 +167,124 @@
 
 	                  <% end %>
 
-					
-
-					<%= link_to 'Edit', edit_book_path(@book) %> |
-					<%= link_to 'Back', books_path %>
+					 <div class="grid-item col-md-12">
+	                    <div class="item-content clearfix">     
+	                      <div class="text-content">
+	                      	<p>
+								<%= link_to 'Edit', edit_book_path(@book) %> |
+								<%= link_to 'Back', books_path %>
+							</p>
+							</div>
+			            </div><!-- end: .item-content -->
+			         </div><!-- end: .grid-item -->
 
 				 </section>
 
             </div><!-- .col-sm-10 -->
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
+
+        <article id="becomemovie" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg4.jpg">
+          <div class="content-wrapper clearfix">
+            
+              <h2 class="section-title">We are going to become this book in movie!</h2>
+              
+              
+                <!-- CONTACT FORM -->
+                <div class="col-sm-11 col-md-10 pull-right">
+                  <!-- IMPORTANT: change the email address at the top of the assets/php/mail.php file to the email address that you want this form to send to -->
+                  <form class="form-style validate-form clearfix" action="assets/php/mail.php" method="POST" role="form">
+
+                    <!-- form left col -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" class="text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Director" name="director">
+                      </div>  
+                      <div class="form-group">
+                        <input type="email" class="text-field form-control validate-field required" data-validation-type="string" id="form-email" placeholder="Stars" name="email">
+                      </div>
+                      <div class="form-group">
+                        <input type="tel" class="text-field form-control validate-field phone" data-validation-type="phone" id="form-contact-number" placeholder="Contact Number" name="contact_number">
+                      </div>    
+                      <div class="form-group text-right">
+                        <img id="form-captcha-img" src="">
+                        <input type="text" class="text-field form-control validate-field required" data-validation-type="captcha" id="form-captcha" placeholder="Enter text" name="captcha">
+                        <span id="form-captcha-refresh" class="fa fa-refresh" title="Reload"></span>
+                      </div>                                   
+                    </div><!-- end: form left col -->
+
+                    <!-- form right col -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <textarea placeholder="Storyline, film's plot... as far as you concern, the main parts..." class="form-control validate-field required" name="message"></textarea>
+                      </div> 
+                      <div class="form-group">
+                        <img src="" class="form-loader">
+                        <button type="submit" class="btn btn-sm btn-outline-inverse">Submit petition!</button>
+                      </div> 
+                      <div class="form-group form-general-error-container"></div>           
+                    </div><!-- end: form right col -->
+
+                  </form>
+                </div><!-- end: CONTACT FORM -->
+
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+
+
+         <article id="datamovie" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg4.jpg">
+          <div class="content-wrapper clearfix">
+            
+              <h4 class="section-title">Help us to improve our books database, send us details missing, such as description, links, subjects, publish date... send us more details about this book please!</h4>
+              
+              
+                <!-- CONTACT FORM -->
+                <div class="col-sm-11 col-md-10 pull-right">
+                  <!-- IMPORTANT: change the email address at the top of the assets/php/mail.php file to the email address that you want this form to send to -->
+                  <form class="form-style validate-form clearfix" action="assets/php/mail.php" method="POST" role="form">
+                  	<h2 class="text-center">
+		           		<% if @book.title %>	
+						  <%= @book.title %>
+						<% end %>
+		           	</h2>
+                    <!-- form left col -->
+                    <div class="col-md-6">                      
+                      <div class="form-group">
+                      	<div class="text-left">Image portrait book:</div>
+                        <input type="file" id="form-contact-number" placeholder="Image" name="image">
+                      </div>    
+                      <div class="form-group">
+                        <input type="text" class="text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Places" name="places">
+                      </div>  
+                      <div class="form-group">
+                        <input type="email" class="text-field form-control validate-field required" data-validation-type="string" id="form-email" placeholder="Links" name="links">
+                      </div>
+                      <div class="form-group text-right">
+                        <img id="form-captcha-img" src="">
+                        <input type="text" class="text-field form-control validate-field required" data-validation-type="captcha" id="form-captcha" placeholder="Enter text" name="captcha">
+                        <span id="form-captcha-refresh" class="fa fa-refresh" title="Reload"></span>
+                      </div>                                   
+                    </div><!-- end: form left col -->
+
+                    <!-- form right col -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <textarea placeholder="Description" name="message"></textarea>
+                      </div> 
+                      <div class="form-group">
+                        <img src="" class="form-loader">
+                        <button type="submit" class="btn btn-sm btn-outline-inverse">Submit details!</button>
+                      </div> 
+                      <div class="form-group form-general-error-container"></div>           
+                    </div><!-- end: form right col -->
+
+                  </form>
+                </div><!-- end: CONTACT FORM -->
+
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+
+
+
 </section>        
 
