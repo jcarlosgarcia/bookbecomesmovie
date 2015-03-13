@@ -17,7 +17,7 @@
         <td><%= book.descriptiontext %></td>
         <td>
             <% book.authors.each do |author| %>
-                <div><%= author.name %></div>
+                <div><%= link_to author.name, author%></div>
             <% end %>
         </td>
         <td><%= link_to 'Show', book %></td>
