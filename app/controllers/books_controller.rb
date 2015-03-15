@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   # GET /books
   def index
     #@books = Book.all
-    @books = Book.all.limit(40)
+    @books = Book.all.limit(200)
   end
 
   # GET /books/1

@@ -11,8 +11,9 @@
   <meta property="og:title" content="Book becomes movie"/>
   <meta property="og:site_name" content="Book becomes movie"/>
   <meta property="og:description" content="Book becomes movie"/>
-  <meta property="og:image" content="/assets/other_images/logo.png" />
+  <meta property="og:image" content="<%= image_path('logo.png') %>" />
   <meta property="og:locale" content="en_US" />
+  <link href="<%= image_path('bbm.ico') %>" rel="shortcut icon" /> 
 
   <title>Book becomes movie</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
