@@ -11,10 +11,10 @@
 <div id="mobile-menu-icon" class="visible-xs" onClick="toggle_main_menu();"><span class="glyphicon glyphicon-th"></span></div>
 
 <ul id="main-menu">
-		  <li id="menu-item-text" class="menu-item scroll"><a href="#text"><% if @book.title %><%= @book.title %><% end %></a></li>
+		  <li id="menu-item-book" class="menu-item scroll"><a href="#book"><% if @book.title %><%= @book.title %><% end %></a></li>
           <li id="menu-item-becomemovie" class="menu-item scroll"><a href="#becomemovie">I like this book!, i want to watch this film</a></li>
           <li id="menu-item-datamovie" class="menu-item scroll"><a href="#datamovie">Are we missing data for this book?</a></li>
-          <li id="" class="menu-item scroll"><a href="/books">Find more books</a></li>
+          <li id="" class="menu-item scroll"><a href="/books" data-no-turbolink>Find more books</a></li>
 </ul><!-- #main-menu -->
 
 <p id="notice"><%= notice %></p>
@@ -24,7 +24,7 @@
 
 <section id="main-content" class="clearfix">
         
-        <article id="text" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg5.jpg">
+        <article id="book" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg5.jpg">
 
            <div class="content-wrapper clearfix">
 
@@ -81,7 +81,7 @@
 		                        <h5>Author:</h5>
 		                        
 		                            <% @book.authors.each do |author| %>
-									      <p><%= link_to author.name, author%></p>
+									      <p><%= link_to author.name, author, data: { no_turbolink: true }%></p>
 									<% end %>
 
 		                      </div>
