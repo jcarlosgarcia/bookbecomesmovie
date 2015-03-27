@@ -9,10 +9,10 @@
 <div id="mobile-menu-icon" class="visible-xs" onClick="toggle_main_menu();"><span class="glyphicon glyphicon-th"></span></div>
 
 <ul id="main-menu">
-      <li id="menu-item-book" class="menu-item scroll"><a href="#book"></a></li>
-          <li id="menu-item-becomemovie" class="menu-item scroll"><a href="#becomemovie">I like this book!, i want to watch this film</a></li>
-          <li id="menu-item-datamovie" class="menu-item scroll"><a href="#datamovie">Are we missing data for this book?</a></li>
-          <li id="" class="menu-item scroll"><a href="/books" data-no-turbolink>Find more books</a></li>
+      <li id="menu-item-book" class="menu-item scroll"></li>
+          <li id="menu-item-becomemovie" class="menu-item scroll"></li>
+          <li id="menu-item-datamovie" class="menu-item scroll"></li>
+          <li id="" class="menu-item scroll"></li>
 </ul><!-- #main-menu -->
 
 <p id="notice"><%= notice %></p>
@@ -22,62 +22,71 @@
 
 <section id="main-content" class="clearfix">
         
-        <article id="book" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg5.jpg">
+        <article id="carousel" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg5.jpg">
 
            <div class="content-wrapper clearfix">
 
-            <h2 class="text-center">
-                Listing books
-            </h2>
+              <div id="features-carousel" class="carousel slide with-title-indicators max-height" data-height-percent="70" data-ride="carousel">
 
-            <div class="col-sm-11 col-md-10 pull-right">
-            <% @books.each do |book| %>
 
-                 <section class="grid row clearfix clearfix-for-2cols">
+                    <h2 class="text-center">
+                        Listing books
+                    </h2>
 
-                    
-                    <div class="grid-item col-md-6">
-                      <div class="item-content clearfix">    
-                        <span class="icon glyphicon glyphicon-book"></span>     
-                        <div class="text-content">
-                          <h5>
-                            <% if book.title %>  
-                              <%= link_to book.title, book, data: { no_turbolink: true }%>
-                            <% end %>
-                          </h5>
-                          <p>
-                            <% if book.descriptiontext  %> 
-                              <%= book.descriptiontext.html_safe %>
-                            <% end %>
-                          </p>
-                        </div>
-                      </div><!-- end: .item-content -->
-                    </div><!-- end: .grid-item -->
+            
+                    <div class="carousel-inner">
 
-                    <% if book.authors %>  
+                                <% 
+                                   cont=0
 
-                       <!-- grid item -->
-                        <div class="grid-item col-md-6">
-                          <div class="item-content clearfix">
-                            <span class="icon glyphicon glyphicon-user"></span>
-                            <div class="text-content">
-                              <h5>Author:</h5>
-                              
-                                  <% book.authors.each do |author| %>
-                                      <p><%= link_to author.name, author, data: { no_turbolink: true }%></p>
-                                  <% end %>
+                                   @books.each do |book| %>
+                                    
+                                          <div class="item <% if cont==1 %>active<% end %>">
+                                            <div class="carousel-text-content">
+                                                <img src="/assets/other_images/transp-image5.png" class="icon" alt="Lorem Ipsum">
+                                                <% if book.title %>  
+                                                  <h2 class="title">
+                                                  <%= link_to book.title, book, data: { no_turbolink: true }%>
+                                                  </h2>
+                                                <% end %>                                             
 
-                            </div>
-                          </div><!-- end: .item-content -->
-                        </div><!-- end: .grid-item -->
+                                               
+                                                
+                                                  <% if book.authors %>  
+                                                    <p>
+                                                      <% book.authors.each do |author| %>
+                                                          <%= link_to author.name, author, data: { no_turbolink: true }, :class=>"btn btn-outline-inverse btn-sm" %></p>
+                                                      <% end %>
+                                                    </p>
+                                                  <% end %>
+                                            </div>
+                                          </div><!-- end: .item-content -->     
+                                      
+                                <% 
+                                        cont=cont+1
+                                   end 
+                                %>
+                    </div>
+                    <a class="left carousel-control" href="#features-carousel" data-slide="prev"></a>
+                    <a class="right carousel-control" href="#features-carousel" data-slide="next"></a>
 
-                  <% end %>
-                  
-                  </section>
+                    <div>
+                        <ol class="carousel-indicators title-indicators">
+                           <% cont=0
 
-             <% end %>
+                              #@books.each do |book| 
+                              if false
+                                 %>
+                                    <li data-target="#features-carousel" data-slide-to="<%=cont%>"<% if cont==1 %> class="active"<% end %> ><%= book.title %> </li>
+                                 <% 
+                                 cont=cont+1
+                              end 
 
-            </div><!-- .col-sm-10 -->
-          </div><!-- .content-wrapper -->
+                           %>
+                        </ol>
+                    </div>
+
+              </div>
+          </div>
         </article><!-- .section-wrapper -->
 </section>
