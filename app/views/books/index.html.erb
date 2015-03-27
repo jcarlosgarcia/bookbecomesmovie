@@ -1,33 +1,83 @@
-<h1>Listing books</h1>
+<!-- Left Sidebar -->
+<section id="left-sidebar">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Authors</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="logo">
+  <a href="/" class="link-scroll"><img src="/assets/other_images/logo.png" alt="Twilli Air"></a>
+</div><!-- .logo -->
 
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.title %> <%= book._id %></td>
-        <td><%= book.descriptiontext %></td>
-        <td>
-            <% book.authors.each do |author| %>
-                <div><%= link_to author.name, author%></div>
-            <% end %>
-        </td>
-        <td><%= link_to 'Show', book, data: { no_turbolink: true } %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!-- Menu Icon for smaller viewports -->
+<div id="mobile-menu-icon" class="visible-xs" onClick="toggle_main_menu();"><span class="glyphicon glyphicon-th"></span></div>
 
-<br>
+<ul id="main-menu">
+      <li id="menu-item-book" class="menu-item scroll"><a href="#book"></a></li>
+          <li id="menu-item-becomemovie" class="menu-item scroll"><a href="#becomemovie">I like this book!, i want to watch this film</a></li>
+          <li id="menu-item-datamovie" class="menu-item scroll"><a href="#datamovie">Are we missing data for this book?</a></li>
+          <li id="" class="menu-item scroll"><a href="/books" data-no-turbolink>Find more books</a></li>
+</ul><!-- #main-menu -->
 
-<%= link_to 'New Book', new_book_path %>
+<p id="notice"><%= notice %></p>
+
+</section><!-- #left-sidebar -->
+
+
+<section id="main-content" class="clearfix">
+        
+        <article id="book" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg5.jpg">
+
+           <div class="content-wrapper clearfix">
+
+            <h2 class="text-center">
+                Listing books
+            </h2>
+
+            <div class="col-sm-11 col-md-10 pull-right">
+            <% @books.each do |book| %>
+
+                 <section class="grid row clearfix clearfix-for-2cols">
+
+                    
+                    <div class="grid-item col-md-6">
+                      <div class="item-content clearfix">    
+                        <span class="icon glyphicon glyphicon-book"></span>     
+                        <div class="text-content">
+                          <h5>
+                            <% if book.title %>  
+                              <%= link_to book.title, book, data: { no_turbolink: true }%>
+                            <% end %>
+                          </h5>
+                          <p>
+                            <% if book.descriptiontext  %> 
+                              <%= book.descriptiontext.html_safe %>
+                            <% end %>
+                          </p>
+                        </div>
+                      </div><!-- end: .item-content -->
+                    </div><!-- end: .grid-item -->
+
+                    <% if book.authors %>  
+
+                       <!-- grid item -->
+                        <div class="grid-item col-md-6">
+                          <div class="item-content clearfix">
+                            <span class="icon glyphicon glyphicon-user"></span>
+                            <div class="text-content">
+                              <h5>Author:</h5>
+                              
+                                  <% book.authors.each do |author| %>
+                                      <p><%= link_to author.name, author, data: { no_turbolink: true }%></p>
+                                  <% end %>
+
+                            </div>
+                          </div><!-- end: .item-content -->
+                        </div><!-- end: .grid-item -->
+
+                  <% end %>
+                  
+                  </section>
+
+             <% end %>
+
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+</section>
