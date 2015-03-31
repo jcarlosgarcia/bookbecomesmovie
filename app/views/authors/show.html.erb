@@ -1,94 +1,320 @@
+
+<!-- Left Sidebar -->
+<section id="left-sidebar">
+
+<div class="logo">
+  <a href="/" class="link-scroll"><img src="/assets/other_images/logo.png" alt="Twilli Air"></a>
+</div><!-- .logo -->
+
+<!-- Menu Icon for smaller viewports -->
+<div id="mobile-menu-icon" class="visible-xs" onClick="toggle_main_menu();"><span class="glyphicon glyphicon-th"></span></div>
+
+<ul id="main-menu">
+      <li id="menu-item-book" class="menu-item scroll"><a href="#book"><% if @author.name %><%= @author.name %><% end %></a></li>
+             <li id="menu-item-datamovie" class="menu-item scroll"><a href="#datamovie">Are we missing data for this author?</a></li>
+          <li id="" class="menu-item scroll"><a href="/books" data-no-turbolink>Find more books</a></li>
+</ul><!-- #main-menu -->
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @author.name %>
-</p>
-
-<p>
-  <strong>Alternate names:</strong>
-   	<table>
-		<%if @author.alternate_names
-			@author.alternate_names.each do |alternate_name| %>
-		      <tr>
-		        <td><%= alternate_name%></td>
-		      </tr>
-		<%   end 
-		  end
-		%>
-	</table>
-</p>
-
-<p>
-  <strong>Birth date:</strong>
-  <%= @author.birth_date %>
-</p>
-
-<p>
-  <strong>Death date:</strong>
-  <%= @author.death_date %>
-</p>
-
-<p>
-  <strong>Fuller name:</strong>
-  <%= @author.fuller_name %>
-</p>
-
-<p>
-  <strong>Death date:</strong>
-  <%= @author.death_date %>
-</p>
-
-<p>
-  <strong>Links:</strong>
-   	<table>
-		<%if @author.links
-			 @author.links.each do |link| %>
-			      <tr>
-			        <td><a href="<%= link["url"] %>" target="blank"><%= link["title"]%></a></td>
-			      </tr>
-		<%   end 
-		  end%>
-	</table>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @author.location %>
-</p>
-
-<p>
-  <strong>Publishers:</strong>
-   	<table>
-		<%if @author.publishers
-			 @author.publishers.each do |publisher| %>
-			      <tr>
-			        <td><%= publisher%></td>
-			      </tr>
-		<%   end 
-		  end%>
-	</table>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @author.website %>
-</p>
-
-<p>
-  <strong>Wikipedia:</strong>
-  <%= @author.wikipedia %>
-</p>
-
-<p>
-  <strong>Biography:</strong>
-  <%= @author.bio %> <br><br>
-  <%if @author.bio
-  %>     <%= @author.bio["value"] %>
-  <%end
-  %>
-</p>
+</section><!-- #left-sidebar -->
 
 
-<%= link_to 'Edit', edit_author_path(@author) %> |
-<%= link_to 'Back', authors_path %>
+<section id="main-content" class="clearfix">
+        
+        <article id="book" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg5.jpg">
+
+           <div class="content-wrapper clearfix">
+
+            <h2 class="text-center">
+              <% if @author.name %>  
+                <%= @author.name %>
+              <% end %>
+            </h2>
+
+            <div class="col-sm-11 col-md-10 pull-right">
+
+                 <section class="grid row clearfix clearfix-for-2cols">
+
+                    
+                    <div class="grid-item col-md-12">
+                      <div class="item-content clearfix">    
+                        <span class="icon glyphicon glyphicon-book"></span>     
+                        <div class="text-content">
+                          <h5>
+                            Biography:
+                          </h5>
+                          <p>
+                            <% if @author.bio  %> 
+                              <%= @author.bio.html_safe %>
+                            <% end %>
+                          </p>
+                        </div>
+                      </div><!-- end: .item-content -->
+                    </div><!-- end: .grid-item -->
+
+                    <% if @author.alternate_names %>  
+
+                       <!-- grid item -->
+                      <div class="grid-item col-md-6">
+                        <div class="item-content clearfix">
+                          <span class="icon glyphicon glyphicon-user"></span>
+                          <div class="text-content">
+                            <h5>Alternate names::</h5>
+                            
+                                <%
+                                    @author.alternate_names.each do |alternate_name| %>
+                                        <tr>
+                                          <td><%= alternate_name%></td>
+                                        </tr>
+                                  <%   end 
+                                  %>
+
+                          </div>
+                        </div><!-- end: .item-content -->
+                      </div><!-- end: .grid-item -->
+
+                  <% end %>
+                   
+                  <% if @author.birth_date %>
+
+                        <div class="grid-item col-md-6">
+                        <div class="item-content clearfix">
+                          <span class="icon glyphicon glyphicon-eye-open"></span>
+                          <div class="text-content">
+                            <h5>Birth date::</h5>
+                            <p>
+                               <%= @author.birth_date %>
+                            </p>
+                          </div>
+                        </div><!-- end: .item-content -->
+                      </div><!-- end: .grid-item -->
+
+                  <% end %>
+
+                  <% if @author.death_date %>
+
+                        <!-- grid item -->
+                        <div class="grid-item col-md-6">
+                          <div class="item-content clearfix">
+                            <span class="icon glyphicon glyphicon-tags"></span>
+                            <div class="text-content">
+                              <h5>Death date:</h5>
+                             
+                               <p> <%= @author.death_date %></p>
+
+                            </div>
+                          </div><!-- end: .item-content -->
+                        </div><!-- end: .grid-item -->
+
+                    <% end %>
+
+
+                    <% if @author.fuller_name %>
+
+                        <!-- grid item -->
+                        <div class="grid-item col-md-6">
+                          <div class="item-content clearfix">
+                            <span class="icon glyphicon glyphicon-tree-deciduous"></span>
+                            <div class="text-content">
+                              <h5>Fuller name:</h5>
+                                                             
+                                    <p><%= @author.fuller_name%></p>
+                   
+
+                            </div>
+                          </div><!-- end: .item-content -->
+                        </div><!-- end: .grid-item -->
+
+                    <% end %>
+
+
+                     <% if @author.links %>
+
+                        <!-- grid item -->
+                        <div class="grid-item col-md-6">
+                          <div class="item-content clearfix">
+                            <span class="icon glyphicon glyphicon-time"></span>
+                             <div class="text-content">
+                              <h5>Links:</h5>
+                             
+                                <%  @author.links.each do |link| %>
+                                        <p><a href="<%= link["url"] %>" target="blank"><%= link["title"]%></a></p>
+                                <% end %>
+
+                            </div>
+                          </div><!-- end: .item-content -->
+                        </div><!-- end: .grid-item -->
+
+                    <% end %>
+
+                    <% if @author.location %>
+
+                        <!-- grid item -->
+                        <div class="grid-item col-md-6">
+                          <div class="item-content clearfix">
+                            <span class="icon glyphicon glyphicon-tree-deciduous"></span>
+                            <div class="text-content">
+                              <h5>Location:</h5>
+                                                             
+                                    <p><%= @author.location%></p>
+                   
+
+                            </div>
+                          </div><!-- end: .item-content -->
+                        </div><!-- end: .grid-item -->
+
+                    <% end %>
+
+                    <% if @author.publishers %>
+
+                        <!-- grid item -->
+                        <div class="grid-item col-md-6">
+                          <div class="item-content clearfix">
+                            <span class="icon glyphicon glyphicon-time"></span>
+                             <div class="text-content">
+                              <h5>Publishers:</h5>
+                             
+                                <%  @author.publishers.each do |publisher| %>
+                                        <p><%= publisher%></p>
+                                <% end %>
+
+                            </div>
+                          </div><!-- end: .item-content -->
+                        </div><!-- end: .grid-item -->
+
+                    <% end %>
+
+                    <% if @author.website %>
+
+                        <!-- grid item -->
+                        <div class="grid-item col-md-6">
+                          <div class="item-content clearfix">
+                            <span class="icon glyphicon glyphicon-tree-deciduous"></span>
+                            <div class="text-content">
+                              <h5>Website:</h5>
+                                                             
+                                    <p><%= @author.website%></p>
+                   
+
+                            </div>
+                          </div><!-- end: .item-content -->
+                        </div><!-- end: .grid-item -->
+
+                    <% end %>
+
+                    <% if @author.wikipedia %>
+
+                        <!-- grid item -->
+                        <div class="grid-item col-md-6">
+                          <div class="item-content clearfix">
+                            <span class="icon glyphicon glyphicon-tree-deciduous"></span>
+                            <div class="text-content">
+                              <h5>Wikipedia:</h5>
+                                                             
+                                    <p><%= @author.wikipedia%></p>
+                   
+
+                            </div>
+                          </div><!-- end: .item-content -->
+                        </div><!-- end: .grid-item -->
+
+                    <% end %>
+
+
+                     <% if @author.bio %>
+
+                        <!-- grid item -->
+                        <div class="grid-item col-md-6">
+                          <div class="item-content clearfix">
+                            <span class="icon glyphicon glyphicon-tree-deciduous"></span>
+                            <div class="text-content">
+                              <h5>Biography:</h5>
+                                                             
+                                    <p><%= @author.bio%></p>
+                   
+
+                            </div>
+                          </div><!-- end: .item-content -->
+                        </div><!-- end: .grid-item -->
+
+                    <% end %>
+
+
+
+
+
+          <div class="grid-item col-md-12">
+              <div class="item-content clearfix">     
+                        <div class="text-content">
+                          <p>
+                              <%= link_to 'Edit', edit_author_path(@author) %> |
+                              <%= link_to 'Back', authors_path %>
+                          </p>
+                        </div>
+              </div><!-- end: .item-content -->
+          </div><!-- end: .grid-item -->
+
+         </section>
+
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+
+     
+         <article id="datamovie" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg4.jpg">
+          <div class="content-wrapper clearfix">
+            
+              <h4 class="section-title">Help us to improve our books database, send us details missing, such as description, links, subjects, publish date... send us more details about this book please!</h4>
+              
+              
+                <!-- CONTACT FORM -->
+                <div class="col-sm-11 col-md-10 pull-right">
+                  <!-- IMPORTANT: change the email address at the top of the assets/php/mail.php file to the email address that you want this form to send to -->
+                  <form class="form-style validate-form clearfix" action="assets/php/mail.php" method="POST" role="form">
+                    <h2 class="text-center">
+                        <% if @author.name %>  
+                          <%= @author.name %>
+                        <% end %>
+                    </h2>
+                    <!-- form left col -->
+                    <div class="col-md-6">                      
+                      <div class="form-group">
+                        <div class="text-left">Image portrait book:</div>
+                        <input type="file" id="form-contact-number" placeholder="Image" name="image">
+                      </div>    
+                      <div class="form-group">
+                        <input type="text" class="text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Places" name="places">
+                      </div>  
+                      <div class="form-group">
+                        <input type="email" class="text-field form-control validate-field required" data-validation-type="string" id="form-email" placeholder="Links" name="links">
+                      </div>
+                      <div class="form-group text-right">
+                        <img id="form-captcha-img" src="">
+                        <input type="text" class="text-field form-control validate-field required" data-validation-type="captcha" id="form-captcha" placeholder="Enter text" name="captcha">
+                        <span id="form-captcha-refresh" class="fa fa-refresh" title="Reload"></span>
+                      </div>                                   
+                    </div><!-- end: form left col -->
+
+                    <!-- form right col -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <textarea placeholder="Description" name="message"></textarea>
+                      </div> 
+                      <div class="form-group">
+                        <img src="" class="form-loader">
+                        <button type="submit" class="btn btn-sm btn-outline-inverse">Submit details!</button>
+                      </div> 
+                      <div class="form-group form-general-error-container"></div>           
+                    </div><!-- end: form right col -->
+
+                  </form>
+                </div><!-- end: CONTACT FORM -->
+
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+
+
+
+</section>        
+
