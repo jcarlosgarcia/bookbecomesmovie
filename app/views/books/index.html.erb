@@ -21,70 +21,28 @@
 
 
 <section id="main-content" class="clearfix">
-        
-        <article id="carousel" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg5.jpg">
+
+        <article id="intro" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg5.jpg">
 
            <div class="content-wrapper clearfix">
 
-              <div id="features-carousel" class="carousel slide with-title-indicators max-height" data-height-percent="70" data-ride="carousel">
+              <div class="col-sm-10 col-md-9 pull-right">
 
 
-                    <h2 class="text-center">
-                        Listing books
-                    </h2>
+                    <h1 class="section-title">
+                        Books
+                    </h1>
 
-            
-                    <div class="carousel-inner">
-
-                                <% 
-                                   cont=0
-
-                                   @books.each do |book| %>
-                                    
-                                          <div class="item <% if cont==1 %>active<% end %>">
-                                            <div class="carousel-text-content">
-                                                <img src="/assets/other_images/transp-image5.png" class="icon" alt="Lorem Ipsum">
-                                                <% if book.title %>  
-                                                  <h2 class="title">
-                                                  <%= link_to book.title, book, data: { no_turbolink: true }%>
-                                                  </h2>
-                                                <% end %>                                             
-
-                                               
-                                                
-                                                  <% if book.authors %>  
-                                                    <p>
-                                                      <% book.authors.each do |author| %>
-                                                          <%= link_to author.name, author, data: { no_turbolink: true }, :class=>"btn btn-outline-inverse btn-sm" %></p>
-                                                      <% end %>
-                                                    </p>
-                                                  <% end %>
-                                            </div>
-                                          </div><!-- end: .item-content -->     
-                                      
-                                <% 
-                                        cont=cont+1
-                                   end 
-                                %>
+                    <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+                      <%
+                      ('A'..'Z').each do |letter|
+                      %>
+                      <a class="btn btn-default" role="button" href="<%=books_search_path(letter)%>"><%= letter %></a>
+                      <%
+                      end
+                      %>
                     </div>
-                    <a class="left carousel-control" href="#features-carousel" data-slide="prev"></a>
-                    <a class="right carousel-control" href="#features-carousel" data-slide="next"></a>
 
-                    <div>
-                        <ol class="carousel-indicators title-indicators">
-                           <% cont=0
-
-                              #@books.each do |book| 
-                              if false
-                                 %>
-                                    <li data-target="#features-carousel" data-slide-to="<%=cont%>"<% if cont==1 %> class="active"<% end %> ><%= book.title %> </li>
-                                 <% 
-                                 cont=cont+1
-                              end 
-
-                           %>
-                        </ol>
-                    </div>
 
               </div>
           </div>

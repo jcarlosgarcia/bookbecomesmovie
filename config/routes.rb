@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   resources :books
 
-  get 'authors/search/:letter', to: 'authors#search', letter: /[a-z]/i
+  get 'authors/search/:letter', to: 'authors#search', letter: /[a-z]/i, as: :authors_search
 
-  get 'books/search/:letter', to: 'books#search', letter: /[a-z]/i
+  get 'books/search/:letter', to: 'books#search', letter: /[a-z]/i, as: :books_search
 
   get 'home/index'
 
