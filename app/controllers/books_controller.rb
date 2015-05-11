@@ -7,6 +7,17 @@ class BooksController < ApplicationController
     @books = Book.all.limit(200)
   end
 
+  # GET /books/search
+  def search
+    if defined? params[:letter]
+      letter = params[:letter][0]
+    else
+      letter = 'A'
+    end
+
+    @books = Book.where(title: /^#{letter}/i).limit(3)
+  end
+
   # GET /books/1
   def show
   end
