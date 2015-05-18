@@ -14,8 +14,22 @@ class BooksController < ApplicationController
     else
       letter = 'A'
     end
+    @page_number = 1
+    @num_books = Book.count()
 
-    @books = Book.where(title: /^#{letter}/i).limit(3)
+    begin
+      @page_number = params[:page].to_i unless params[:page].blank?
+      last_page = (@num_books / BBM::MAX_PAGE_ITEMS) + 1
+      if @page_number <= 0
+        @page_number = 1
+      elsif @page_number > last_page
+        @page_number = last_page
+      end
+    rescue
+      logger.error "Page number not valid!"
+    end
+
+    @books = Book.where(title: /^#{letter}/i).without(:created, :last_modified, :latest_revision, :revision).desc(:title).skip((@page_number-1) * BBM::MAX_PAGE_ITEMS).limit(BBM::MAX_PAGE_ITEMS)
   end
 
   # GET /books/1

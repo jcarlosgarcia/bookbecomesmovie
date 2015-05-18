@@ -42,48 +42,86 @@
                       end
                       %>
                     </div>
-                    <section class="feature-columns row clearfix">
                     <%
                     unless @books.blank?
-
                       item = 0
 
                       @books.each do |book|
-
                         item += 1
 
-                    %>
-                        <article class="feature-col col-md-4">
-                          <a class="thumbnail linked" onclick="populate_and_open_modal(event, 'modal-content-<%=item%>');" href="">
-                            <div class="image-container">
-                              <img alt="Lorem Ipsum" class="item-thumbnail" data-img-src="/assets/other_images/project-2.jpg" src="/assets/other_images/project-2.jpg">
-                            </div>
-                            <div class="caption">
-                              <h5><%=book.title%></h5>
-                              <p><%=book.authors%></p>
-                            </div><!-- .caption -->
-                          </a><!-- .thumbnail -->
+                        if item % BBM::MAX_ROW_ITEMS == 1
+                          %>
+                          <section class="feature-columns row clearfix">
+                          <%
+                        end
 
-                          <div id="modal-content-<%=item%>" class="content-to-populate-in-modal">
-                            <img alt="Lorem Ipsum" class="full-width" data-img-src="/assets/other_images/top-image2.jpg" src="/assets/other_images/top-image2.jpg">
-                            <h1><%=book.title%></h1>
-                            <p><%=book.descriptiontext%></p>
-                          </div><!-- #modal-content-<%=item%> -->
-                      </article>
-                    <%
+                        %>
+                          <article class="feature-col col-md-4">
+                            <a class="thumbnail linked" onclick="populate_and_open_modal(event, 'modal-content-<%=item%>');" href="">
+                              <div class="image-container">
+                                <img alt="Lorem Ipsum" class="item-thumbnail" data-img-src="/assets/other_images/project-2.jpg" src="/assets/other_images/project-2.jpg">
+                              </div>
+                              <div class="caption">
+                                <h5><%=book.title%></h5>
+                                <p><%=book.authors%></p>
+                              </div><!-- .caption -->
+                            </a><!-- .thumbnail -->
+
+                            <div id="modal-content-<%=item%>" class="content-to-populate-in-modal">
+                              <img alt="Lorem Ipsum" class="full-width" data-img-src="/assets/other_images/top-image2.jpg" src="/assets/other_images/top-image2.jpg">
+                              <h1><%=book.title%></h1>
+                              <p><%=book.descriptiontext%></p>
+                            </div><!-- #modal-content-<%=item%> -->
+                          </article>
+                        <%
+
+                        if item % BBM::MAX_ROW_ITEMS == 0
+                          %>
+                          </section>
+                          <%
+                        end
+
                       end
 
+                      if item % BBM::MAX_ROW_ITEMS != 1
+                        %>
+                        </section>
+                        <%
+                      end
+
+                      %>
+                      <section class="feature-columns row clearfix">
+                        <ul class="pager">
+                          <%
+                          unless @page_number <= 1
+                          %>
+                          <li class="previous">
+                            <%= link_to "&larr; Previous".html_safe, books_search_path(params[:letter], page: @page_number - 1) %>
+                          </li>
+                          <%
+                          end
+                          unless (@page_number * BBM::MAX_PAGE_ITEMS) >= @num_books
+                          %>
+                          <li class="next">
+                            <%= link_to "Next &rarr;".html_safe, books_search_path(params[:letter], page: @page_number - 1) %>
+                          </li>
+                          <%
+                          end
+                          %>
+                        </ul>
+                      </section>
+                    <%
                     else
                     %>
-
-                    <div class="alert alert-danger" role="alert">
-                      <strong>Ooops!</strong> No books found
-                    </div>
+                    <section class="feature-columns row clearfix">
+                      <div class="alert alert-danger" role="alert">
+                        <strong>Ooops!</strong> No books found
+                      </div>
+                    </section>
 
                     <%
                     end
                     %>
-                  </section>
               </div>
           </div>
         </article><!-- .section-wrapper -->
