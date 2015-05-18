@@ -29,9 +29,9 @@
            <div class="content-wrapper clearfix">
 
            	<h2 class="text-center">
-           		<% if @book.title %>	
-				  <%= @book.title %>
-				<% end %>
+           		
+				  Your favorite book becomes movie!
+				
            	</h2>
 
             <div class="col-sm-11 col-md-10 pull-right">
@@ -39,7 +39,21 @@
                  <section class="grid row clearfix clearfix-for-2cols">
 
                  	   <!-- grid item -->
-                 	  <% if @book.image %>
+
+                 	  <% if @book.title %>	
+						  <div class="grid-item col-md-12">
+			                    <div class="item-content clearfix">    
+			                      <span class="icon glyphicon"></span>     
+			                      <div class="text-content">
+			                        <h5>
+			                        	<%=@book.title%>
+			                        </h5>
+			                      </div>
+			                    </div><!-- end: .item-content -->
+			              </div><!-- end: .grid-item -->
+					  <% end %>   
+
+                 	   <% if @book.imagebook &&  @book.imagebook!="nophoto"%>
 	                      		
 	                      		<div class="grid-item col-md-12">
 				                    <div class="item-content clearfix">    
@@ -47,7 +61,7 @@
 				                      <div class="text-content">
 				                        
 				                        <p>
-				                        	<img class="medium-width" src="<%= @book.image %>" />
+				                        	<img class="medium-width" src="<%= @book.imagebook %>" />
 				                        </p>
 				                      </div>
 				                    </div><!-- end: .item-content -->
@@ -55,26 +69,10 @@
 
 	                  <% end %>
 
-	                  <div class="grid-item col-md-12">
-	                    <div class="item-content clearfix">    
-	                      <span class="icon glyphicon glyphicon-book"></span>     
-	                      <div class="text-content">
-	                        <h5>
-	                        	Summary:
-	                        </h5>
-	                        <p>
-	                        	<% if @book.descriptiontext  %>	
-								  <%= @book.descriptiontext.html_safe %>
-								<% end %>
-	                        </p>
-	                      </div>
-	                    </div><!-- end: .item-content -->
-	                  </div><!-- end: .grid-item -->
-
 	                  <% if @book.authors %>	
 
 	                 	   <!-- grid item -->
-		                  <div class="grid-item col-md-6">
+		                  <div class="grid-item col-md-12">
 		                    <div class="item-content clearfix">
 		                      <span class="icon glyphicon glyphicon-user"></span>
 		                      <div class="text-content">
@@ -89,6 +87,23 @@
 		                  </div><!-- end: .grid-item -->
 
 		              <% end %>
+
+                 	 <div class="grid-item col-md-12">
+	                    <div class="item-content clearfix">    
+	                      <span class="icon glyphicon glyphicon-book"></span>     
+	                      <div class="text-content">
+	                        <h5>
+	                        	Summary:
+	                        </h5>
+	                        <p>
+	                        	<% if @book.descriptiontext  %>	
+								  <%= @book.descriptiontext.html_safe %>
+								<% end %>
+	                        </p>
+	                      </div>
+	                    </div><!-- end: .item-content -->
+	                  </div><!-- end: .grid-item -->
+	                 
 	                 
 		              <% if @book.links	%>
 

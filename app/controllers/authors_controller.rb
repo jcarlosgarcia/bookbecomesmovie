@@ -4,7 +4,7 @@ class AuthorsController < ApplicationController
   # GET /authors
   def index
     #@authors = Author.all
-    @authors = Author.all.limit(40)
+    @authors = Author.all.limit(200)
   end
 
   # GET /authors/1
