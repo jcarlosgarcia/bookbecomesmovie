@@ -37,7 +37,7 @@
                       <%
                       ('A'..'Z').each do |letter|
                       %>
-                      <a class="btn btn-default" role="button" href="<%=books_search_path(letter)%>"><%= letter %></a>
+                      <a class="btn btn-default" role="button" href="<%=books_search_path(letter)%>" data-no-turbolink><%= letter %></a>
                       <%
                       end
                       %>
@@ -58,17 +58,45 @@
                         %>
                           <article class="feature-col col-md-4">
                             <a class="thumbnail linked" onclick="populate_and_open_modal(event, 'modal-content-<%=item%>');" href="">
-                              <div class="image-container">
-                                <img alt="Lorem Ipsum" class="item-thumbnail" data-img-src="/assets/other_images/project-2.jpg" src="/assets/other_images/project-2.jpg">
+                              <div class="image-container text-center">
+                                <%
+                                unless book.imagebook.blank? || book.imagebook == 'nophoto'
+                                %>
+                                  <img alt="<%=book.title%>" class="item-thumbnail" data-img-src="<%= book.imagebook %>" src="<%= book.imagebook %>">
+                                <%
+                                else
+                                %>
+                                  <span class="icon glyphicon glyphicon-book glyphicon-3x"></span>
+                                <%
+                                end
+                                %>
                               </div>
                               <div class="caption">
                                 <h5><%=book.title%></h5>
-                                <p><%=book.authors%></p>
+                                <%
+                                unless book.authors.blank?
+                                  book.authors.each do |author|
+                                %>
+                                  <p><%= link_to author.name, author, data: { no_turbolink: true }%></p>
+                                <%
+                                  end
+                                end
+                                %>
                               </div><!-- .caption -->
                             </a><!-- .thumbnail -->
 
                             <div id="modal-content-<%=item%>" class="content-to-populate-in-modal">
-                              <img alt="Lorem Ipsum" class="full-width" data-img-src="/assets/other_images/top-image2.jpg" src="/assets/other_images/top-image2.jpg">
+                              <%
+                              unless book.imagebook.blank? || book.imagebook == 'nophoto'
+                              %>
+                                <img alt="<%=book.title%>" class="full-width" data-img-src="<%= book.imagebook %>" src="<%= book.imagebook %>">
+                              <%
+                              else
+                              %>
+                                <span class="icon glyphicon glyphicon-book glyphicon-3x"></span>
+                              <%
+                              end
+                              %>
                               <h1><%=book.title%></h1>
                               <p><%=book.descriptiontext%></p>
                             </div><!-- #modal-content-<%=item%> -->
@@ -83,7 +111,7 @@
 
                       end
 
-                      if item % BBM::MAX_ROW_ITEMS != 1
+                      if item % BBM::MAX_ROW_ITEMS != 0
                         %>
                         </section>
                         <%
@@ -96,14 +124,14 @@
                           unless @page_number <= 1
                           %>
                           <li class="previous">
-                            <%= link_to "&larr; Previous".html_safe, books_search_path(params[:letter], page: @page_number - 1) %>
+                            <%= link_to "&larr; Previous".html_safe, books_search_path(params[:letter], page: @page_number - 1), data: { no_turbolink: true } %>
                           </li>
                           <%
                           end
                           unless (@page_number * BBM::MAX_PAGE_ITEMS) >= @num_books
                           %>
                           <li class="next">
-                            <%= link_to "Next &rarr;".html_safe, books_search_path(params[:letter], page: @page_number - 1) %>
+                            <%= link_to "Next &rarr;".html_safe, books_search_path(params[:letter], page: @page_number + 1), data: { no_turbolink: true } %>
                           </li>
                           <%
                           end
