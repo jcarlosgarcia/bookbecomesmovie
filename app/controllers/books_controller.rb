@@ -29,7 +29,7 @@ class BooksController < ApplicationController
       logger.error "Page number not valid!"
     end
 
-    @books = Book.where(title: /^#{letter}/i).without(:created, :last_modified, :latest_revision, :revision).desc(:title).skip((@page_number-1) * BBM::MAX_PAGE_ITEMS).limit(BBM::MAX_PAGE_ITEMS)
+    @books = Book.where(title: /^#{letter}/i).without(:created, :last_modified, :latest_revision, :revision).asc(:title).skip((@page_number-1) * BBM::MAX_PAGE_ITEMS).limit(BBM::MAX_PAGE_ITEMS)
   end
 
   # GET /books/1

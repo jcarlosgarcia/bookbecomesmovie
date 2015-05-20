@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+.glyphicon-2x{
+    font-size: 40px;
+}
+.glyphicon-3x{
+    font-size: 60px;
+}
