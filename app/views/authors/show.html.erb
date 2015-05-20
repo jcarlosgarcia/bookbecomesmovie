@@ -36,7 +36,25 @@
 
                  <section class="grid row clearfix clearfix-for-2cols">
 
-                    
+
+                    <% if @author.imageauthor &&  @author.imageauthor!="nophoto"%>
+                            
+                            <div class="grid-item col-md-12">
+                            <div class="item-content clearfix">    
+                              <span class="icon glyphicon glyphicon-picture"></span>     
+                              <div class="text-content">
+                                
+                                <p>
+                                  <img class="medium-width" src="<%= @author.imageauthor %>" />
+                                </p>
+                              </div>
+                            </div><!-- end: .item-content -->
+                        </div><!-- end: .grid-item -->
+
+                    <% end %>
+
+                    <% if @author.bio %>  
+
                     <div class="grid-item col-md-12">
                       <div class="item-content clearfix">    
                         <span class="icon glyphicon glyphicon-book"></span>     
@@ -53,14 +71,16 @@
                       </div><!-- end: .item-content -->
                     </div><!-- end: .grid-item -->
 
+                    <% end %>
+
                     <% if @author.alternate_names %>  
 
                        <!-- grid item -->
-                      <div class="grid-item col-md-6">
+                      <div class="grid-item col-md-12">
                         <div class="item-content clearfix">
                           <span class="icon glyphicon glyphicon-user"></span>
                           <div class="text-content">
-                            <h5>Alternate names::</h5>
+                            <h5>Alternate names:</h5>
                             
                                 <%
                                     @author.alternate_names.each do |alternate_name| %>

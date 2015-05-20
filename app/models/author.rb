@@ -11,4 +11,5 @@ class Author
 	field :website, type: String  
 	field :wikipedia, type: String  
 	field :bio, type: Array 
+	field :imageauthor, type: String  
 end
