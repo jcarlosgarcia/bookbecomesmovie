@@ -63,7 +63,9 @@
                             Biography:
                           </h5>
                           <p>
-                            <% if @author.bio  %> 
+                            <% if @author.bio["value"]  %> 
+                              <%= @author.bio["value"] %>
+                            <% elsif @author.bio %>
                               <%= @author.bio.html_safe %>
                             <% end %>
                           </p>
@@ -240,27 +242,6 @@
                         </div><!-- end: .grid-item -->
 
                     <% end %>
-
-
-                     <% if @author.bio %>
-
-                        <!-- grid item -->
-                        <div class="grid-item col-md-6">
-                          <div class="item-content clearfix">
-                            <span class="icon glyphicon glyphicon-tree-deciduous"></span>
-                            <div class="text-content">
-                              <h5>Biography:</h5>
-                                                             
-                                    <p><%= @author.bio%></p>
-                   
-
-                            </div>
-                          </div><!-- end: .item-content -->
-                        </div><!-- end: .grid-item -->
-
-                    <% end %>
-
-
 
 
 

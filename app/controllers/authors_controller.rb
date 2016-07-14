@@ -4,7 +4,7 @@ class AuthorsController < ApplicationController
   # GET /authors
   def index
     #@authors = Author.all
-    @authors = Author.all.limit(200)
+    @authors = Author.all.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /authors/1
