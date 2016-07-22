@@ -82,5 +82,5 @@ test:
 production:
   sessions:
     default:
-        uri: <%= ENV['MONGOLAB_URI'] %>
+        uri: <%= ENV['ORMONGO_URL'] %>
 
