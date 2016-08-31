@@ -1,4 +1,6 @@
 class Book
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   include Mongoid::Document
   has_and_belongs_to_many :authors
   field :title, type: String

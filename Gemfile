@@ -74,3 +74,6 @@ gem 'newrelic_rpm'
 gem 'rails_12factor'
 
 gem 'will_paginate_mongoid'
+
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'

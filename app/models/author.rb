@@ -1,4 +1,6 @@
 class Author
+	include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 	include Mongoid::Document
 	field :name, type: String
 	field :alternate_names, type: Array
