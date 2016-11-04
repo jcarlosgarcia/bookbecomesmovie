@@ -75,8 +75,13 @@ gem 'rails_12factor'
 
 gem 'will_paginate_mongoid'
 
+<<<<<<< HEAD
 gem 'elasticsearch-rails'
 
 gem 'elasticsearch-model'
 
 gem 'react-rails'
+=======
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+>>>>>>> a4c94f9781e54db496f0ff506db7611056a07939
