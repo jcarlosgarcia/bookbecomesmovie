@@ -46,6 +46,15 @@ class AuthorsController < ApplicationController
     redirect_to authors_url, notice: 'Author was successfully destroyed.'
   end
 
+  # GET /books/search
+  def search
+    if params[:q].nil?
+      @authors = []
+    else
+      @authors = Author.search params[:q]
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_author

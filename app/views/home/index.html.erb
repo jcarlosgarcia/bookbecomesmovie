@@ -18,8 +18,8 @@
           <li id="menu-item-featured" class="menu-item scroll"><a href="#featured">Featured</a></li>
           <li id="menu-item-signin" class="menu-item scroll"><a href="#signin">Sign in</a></li>
           <li id="menu-item-signup" class="menu-item scroll"><a href="#signup">Sign up</a></li>
-          <li id="" class="menu-item scroll"><a href="/books" data-no-turbolink>Books</a></li>
-          <li id="" class="menu-item scroll"><a href="/authors" data-no-turbolink>Authors</a></li>
+          <li id="menu-item-books" class="menu-item scroll"><a href="#books">Books</a></li>
+          <li id="menu-item-authors" class="menu-item scroll"><a href="#authors" data-no-turbolink>Authors</a></li>
         </ul><!-- #main-menu -->
 
       </section><!-- #left-sidebar -->
@@ -370,7 +370,7 @@
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
 
-         <article id="signup" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg4.jpg">
+        <article id="signup" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg9.jpg">
           <div class="content-wrapper clearfix">
 
               <h1 class="section-title">Sign up</h1>
@@ -414,6 +414,50 @@
                   </form>
                 </div><!-- end: CONTACT FORM -->
 
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+
+        <article id="books" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg7.jpg">
+          <div class="content-wrapper clearfix">
+            <h1 class="section-title">Books</h1>
+            <div class="col-sm-7 col-md-9">
+              <form class="form-style validate-form clearfix" action="assets/php/mail.php" method="POST" role="form">
+                <!-- form right col -->
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Full Name" name="name">
+                  </div>
+                  <div class="form-group">
+                    <img src="/assets/theme_images/loader-form.GIF" class="form-loader">
+                    <button type="submit" class="btn btn-sm btn-outline-inverse">Submit</button>
+                  </div>
+                  <div class="form-group form-general-error-container"></div>
+                </div><!-- end: form right col -->
+              </form>
+            </div><!-- end: CONTACT FORM -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+
+        <article id="authors" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg8.jpg">
+          <div class="content-wrapper clearfix">
+            <h1 class="section-title">Authors</h1>
+            <!-- CONTACT FORM -->
+            <div class="col-sm-7 col-md-9">
+              <!-- IMPORTANT: change the email address at the top of the assets/php/mail.php file to the email address that you want this form to send to -->
+              <form class="form-style validate-form clearfix" action="assets/php/mail.php" method="POST" role="form">
+                <!-- form right col -->
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Full Name" name="name">
+                  </div>
+                  <div class="form-group">
+                    <img src="/assets/theme_images/loader-form.GIF" class="form-loader">
+                    <button type="submit" class="btn btn-sm btn-outline-inverse">Submit</button>
+                  </div>
+                  <div class="form-group form-general-error-container"></div>
+                </div><!-- end: form right col -->
+              </form>
+            </div><!-- end: CONTACT FORM -->
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
 

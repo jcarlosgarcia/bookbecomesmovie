@@ -33,15 +33,27 @@
                         Books
                     </h1>
 
-                    <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
-                      <%
-                      ('A'..'Z').each do |letter|
-                      %>
-                      <a class="btn btn-default" role="button" href="<%=books_search_path(letter)%>"><%= letter %></a>
-                      <%
-                      end
-                      %>
-                    </div>
+                     <% @books.each do |book| %>
+                      <div>
+                        <div><%= book.title %></div>        
+                        <div> 
+                          <% if book.imagebook &&  book.imagebook!="nophoto"%>                            
+                            <div class="grid-item col-md-12">
+                                <div class="item-content clearfix">       
+                                  <div class="text-content">                    
+                                    <p>
+                                      <img class="medium-width" src="<%= book.imagebook %>" />
+                                    </p>
+                                  </div>
+                                </div><!-- end: .item-content -->
+                            </div><!-- end: .grid-item -->
+                          <% end %>
+                        </div>
+                        <div><%= link_to 'Show', book %></div>
+                        <div><%= link_to 'Edit', edit_author_path(book) %></div>
+                        <div><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                      </div>
+                    <% end %>    
 
 
               </div>

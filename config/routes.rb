@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   resources :authors
 
-  resources :books
-
-  get 'authors/search/:letter', to: 'authors#search', letter: /[a-z]/i, as: :authors_search
-
-  get 'books/search/:letter', to: 'books#search', letter: /[a-z]/i, as: :books_search
+  resources :books do
+    collection do
+      get 'search'
+    end
+  end
 
   get 'home/index'
 
