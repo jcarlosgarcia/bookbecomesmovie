@@ -372,10 +372,7 @@
 
         <article id="signup" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg9.jpg">
           <div class="content-wrapper clearfix">
-
               <h1 class="section-title">Sign up</h1>
-
-
                 <!-- CONTACT FORM -->
                 <div class="col-sm-7 col-md-9">
                   <!-- IMPORTANT: change the email address at the top of the assets/php/mail.php file to the email address that you want this form to send to -->
@@ -418,22 +415,69 @@
         </article><!-- .section-wrapper -->
 
         <article id="books" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg7.jpg">
-          <div class="content-wrapper clearfix">
+          <div class="content-wrapper-search clearfix">
             <h1 class="section-title">Books</h1>
             <div class="col-sm-7 col-md-9">
-              <form class="form-style validate-form clearfix" action="assets/php/mail.php" method="POST" role="form">
-                <!-- form right col -->
+              <%= form_tag @book do |g|  %>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <input type="text" class="text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Full Name" name="name">
+                    <input type="text" class="book_search text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Full Name" name="name" autocomplete="false">
                   </div>
                   <div class="form-group">
                     <img src="/assets/theme_images/loader-form.GIF" class="form-loader">
                     <button type="submit" class="btn btn-sm btn-outline-inverse">Submit</button>
+                  </div>  
+                </div> 
+                <div class="col-md-12">               
+                  <div class="form-group-search ">
+                    <div class="form-group form-general-error-container" id="books_search"></div>
                   </div>
-                  <div class="form-group form-general-error-container"></div>
-                </div><!-- end: form right col -->
-              </form>
+                </div>                
+              <% end %>
+              <script>
+              var setLength=130;
+
+                function truncateString(string, limit, breakChar, rightPad) {
+                   if (string.length <= limit) return string;
+
+                   var substr = string.substr(0, limit);
+                   if ((breakPoint = substr.lastIndexOf(breakChar)) >= 0) 
+                      {
+                       if (breakPoint < string.length -1) {
+                           return string.substr(0, breakPoint) + rightPad;
+                          }
+                      }
+                }
+
+                $('.book_search').keyup(function(){
+                var q = $(this).val();
+                  $.ajax({
+                    type: "GET",
+                    url: "/books/search.json",
+                    dataType: "json",
+                    data: {'q': q},
+                    success:function(result){                        
+                        $("#books_item").remove();
+                        $("#books_search").after('<ul id="books_item"></ul>');
+                        render = true;
+                        /*$("#books_item").on("click", "div", function(){
+                          $("#book_id").val($(this).data('id'));
+                          $(".book_search").val($(this).text());
+                          $("#books_item").remove();
+                        });*/
+                      for(term in result){
+                      render = false;
+                        if (result[term]._source.imagebook.indexOf("cloudinary") != -1) {
+                          $("#books_item").append("<li class=\"col-md-12\"><div class=\"col-md-1\"><img src=\"" + result[term]._source.imagebook + "\" width=\"50px\"></div><div class=\"col-md-11 text-content title\" data-id="+result[term]._id+"><b>" + result[term]._source.title + "</b></div><p>" + truncateString(result[term]._source.description2, setLength, ' ', '...') + "</p></li>");
+                        } else {
+                          $("#books_item").append("<li class=\"col-md-12\"><div class=\"col-md-1\"><img src=\"/assets/other_images/nobookimage.png\" width=\"50px\"></div><div class=\"col-md-11 text-content title\" data-id="+result[term]._id+"><b>" + result[term]._source.title + "</b></div><p>" + truncateString(result[term]._source.description2, setLength, ' ', '...') + "</p></li>");
+                        }
+                      }
+                    }
+                  })
+                });
+              </script>
+    
             </div><!-- end: CONTACT FORM -->
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->

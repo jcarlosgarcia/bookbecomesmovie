@@ -90,13 +90,6 @@ module BBM
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-<<<<<<< HEAD
 
-    # Auto-loading lib files
-    config.autoload_paths << Rails.root.join('lib')
-
-=======
-    
->>>>>>> a4c94f9781e54db496f0ff506db7611056a07939
   end
 end
