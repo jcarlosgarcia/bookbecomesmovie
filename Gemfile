@@ -82,3 +82,5 @@ gem 'elasticsearch-model'
 gem 'react-rails'
 
 gem 'devise'
+
+gem 'rails_admin', '~> 1.0'
