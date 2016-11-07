@@ -80,3 +80,5 @@ gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
 
 gem 'react-rails'
+
+gem 'devise'
