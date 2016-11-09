@@ -5,7 +5,7 @@
       <section id="left-sidebar">
 
         <div class="logo">
-          <a href="#intro" class="link-scroll"><img src="/assets/other_images/logo.png" alt="Twilli Air"></a>
+          <a href="#intro" class="link-scroll" data-no-turbolink><img src="/assets/other_images/logo.png" alt="Twilli Air"></a>
         </div><!-- .logo -->
 
         <!-- Menu Icon for smaller viewports -->
@@ -32,7 +32,7 @@
             <div class="col-sm-10 col-md-9 pull-right">
 
                 <section class="feature-text">
-                  <h1>... I'd bet it'd be a great movie!!!</h1>
+                  <h1>... I bet it'd make a great movie!!!</h1>
                   <p>You really have to read this book... How often have you heard this saying?. We guess sometimes. We would like you to take a step forward, we would like you to watch the movie you want, you can contribute to achieve your desires!.</p>
                   <p><a href="#text" class="link-scroll btn btn-outline-inverse btn-lg">Would you like to know more?</a></p>
                 </section>
@@ -47,7 +47,7 @@
 
                 <h1 class="section-title">You have only to follow a few simple steps</h1>
 
-                <p class="feature-paragraph "><img data-img-src="/assets/other_images/transp-image5b.png" class="lazy pull-right" alt="Lorem Ipsum">In our main left menu have a link "Find the book"... but wait!, read a bit more... we need you sign up (have you already done it?, great, if you haven't already do sign in <a href="#signin">here</a> or sign up quickly and easily with us <a href="#signup">here</a>).</p>
+                <p class="feature-paragraph "><img data-img-src="/assets/other_images/transp-image5b.png" class="lazy pull-right" alt="Lorem Ipsum">In our main menu, on the left, you have a link "books"... but wait!, read a bit more... we need you to sign up (have you already done it?, great, if you haven't please do sign in <a href="#signin">here</a> or sign up quickly and easily with us <a href="#signup">here</a>).</p>
                 <h4>Are you ready for our challenge?</h4>
                 <p>Choose one book, select the best actors, and book will become movie!</p>
                 <p><a href="" onclick="populate_and_open_modal(event, 'modal-content-1');" class="btn btn-outline-inverse btn-sm">Would you like to know more?</a></p>
@@ -421,7 +421,7 @@
               <%= form_tag(:search_books, :method=>'get', :multipart => true) do %>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <input type="text" class="book_search text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Full Name" name="name" autocomplete="false">
+                    <input type="text" class="book_search text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Full Name" name="q" autocomplete="false">
                   </div>
                   <div class="form-group">
                     <img src="/assets/theme_images/loader-form.GIF" class="form-loader">
