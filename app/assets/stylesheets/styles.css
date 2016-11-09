@@ -744,6 +744,10 @@ table {
     position:relative;
 }
 
+#main-content .section-wrapper .content-wrapper-search .form-group-search ul li:hover {
+    cursor: pointer;
+}
+
 /* General Heading Styles */
 
 h1 {

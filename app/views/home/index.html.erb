@@ -418,7 +418,7 @@
           <div class="content-wrapper-search clearfix">
             <h1 class="section-title">Books</h1>
             <div class="col-sm-7 col-md-9">
-              <%= form_tag @book do |g|  %>
+              <%= form_tag(:search_books, :method=>'get', :multipart => true) do %>
                 <div class="col-md-12">
                   <div class="form-group">
                     <input type="text" class="book_search text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Full Name" name="name" autocomplete="false">
@@ -435,8 +435,7 @@
                 </div>                
               <% end %>
               <script>
-              var setLength=130;
-
+                var setLength=130;
                 function truncateString(string, limit, breakChar, rightPad) {
                    if (string.length <= limit) return string;
 
@@ -448,33 +447,38 @@
                           }
                       }
                 }
-
                 $('.book_search').keyup(function(){
                 var q = $(this).val();
-                  $.ajax({
-                    type: "GET",
-                    url: "/books/search.json",
-                    dataType: "json",
-                    data: {'q': q},
-                    success:function(result){                        
-                        $("#books_item").remove();
-                        $("#books_search").after('<ul id="books_item"></ul>');
-                        render = true;
-                        /*$("#books_item").on("click", "div", function(){
-                          $("#book_id").val($(this).data('id'));
-                          $(".book_search").val($(this).text());
+                  if (q.length>2 || q.length==0){
+                    $.ajax({
+                      type: "GET",
+                      url: "/books/search.json",
+                      dataType: "json",
+                      data: {'q': q},
+                      success:function(result){                        
                           $("#books_item").remove();
-                        });*/
-                      for(term in result){
-                      render = false;
-                        if (result[term]._source.imagebook.indexOf("cloudinary") != -1) {
-                          $("#books_item").append("<li class=\"col-md-12\"><div class=\"col-md-1\"><img src=\"" + result[term]._source.imagebook + "\" width=\"50px\"></div><div class=\"col-md-11 text-content title\" data-id="+result[term]._id+"><b>" + result[term]._source.title + "</b></div><p>" + truncateString(result[term]._source.description2, setLength, ' ', '...') + "</p></li>");
-                        } else {
-                          $("#books_item").append("<li class=\"col-md-12\"><div class=\"col-md-1\"><img src=\"/assets/other_images/nobookimage.png\" width=\"50px\"></div><div class=\"col-md-11 text-content title\" data-id="+result[term]._id+"><b>" + result[term]._source.title + "</b></div><p>" + truncateString(result[term]._source.description2, setLength, ' ', '...') + "</p></li>");
+                          $("#books_search").after('<ul id="books_item"></ul>');
+                          render = true;
+                          $("#books_item").on("click", "div", function(){
+                            window.location.href='/books/' + $(this).data('id');
+                            return false;
+                          });
+                          /*$("#books_item").on("click", "div", function(){
+                            $("#book_id").val($(this).data('id'));
+                            $(".book_search").val($(this).text());
+                            $("#books_item").remove();
+                          });*/
+                        for(term in result){
+                        render = false;
+                          if (result[term]._source.imagebook != null && result[term]._source.imagebook.indexOf("cloudinary") != -1) {
+                            $("#books_item").append("<li class=\"col-md-12\"><div class=\"col-md-1\"><img src=\"" + result[term]._source.imagebook + "\" width=\"50px\"></div><div class=\"col-md-11 text-content title\" data-id="+result[term]._id+"><b>" + result[term]._source.title + "</b></div><p>" + truncateString(result[term]._source.description2, setLength, ' ', '...') + "</p></li>");
+                          } else {
+                            $("#books_item").append("<li class=\"col-md-12\"><div class=\"col-md-1\"><img src=\"/assets/other_images/nobookimage.png\" width=\"50px\"></div><div class=\"col-md-11 text-content title\" data-id="+result[term]._id+"><b>" + result[term]._source.title + "</b></div><p>" + truncateString(result[term]._source.description2, setLength, ' ', '...') + "</p></li>");
+                          }
                         }
                       }
-                    }
-                  })
+                    })   
+                  }             
                 });
               </script>
     
