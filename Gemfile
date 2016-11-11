@@ -12,6 +12,7 @@ gem 'rake', '10.4.2'
 
 #gema para conexion a mongodb
 gem 'mongoid', '~> 5.1.0'
+gem 'kaminari-mongoid'
 
 gem 'simple_captcha2', require: 'simple_captcha'
 
@@ -19,6 +20,11 @@ gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 
 #gem "rserve-simpler", "~> 0.0.6"
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

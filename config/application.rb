@@ -93,5 +93,9 @@ module BBM
     # Auto-loading lib files
     config.autoload_paths << Rails.root.join('lib')
 
+    Kaminari.configure do |config|
+      config.page_method_name = :per_page_kaminari
+    end
+
   end
 end
