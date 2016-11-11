@@ -80,7 +80,7 @@ test:
 
 
 production:
-  sessions:
+  clients:
     default:
         uri: <%= ENV['ORMONGO_URL'] %>
 

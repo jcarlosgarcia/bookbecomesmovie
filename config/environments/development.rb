@@ -33,8 +33,15 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
 
   # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
+  # config.action_view.raise_on_missing_translations = true 
 
   # Do not eager load code on boot.
   config.eager_load = false
+
+  # Elasticsearch connection configuration
+  elasticsearch_url = ENV['SEARCHBOX_URL'] || ENV['SEARCHLY_URL']
+
+  Elasticsearch::Model.client = Elasticsearch::Client.new host: elasticsearch_url
+
+
 end

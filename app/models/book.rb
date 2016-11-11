@@ -1,6 +1,8 @@
 require 'elasticsearch/model'
 
 class Book
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   include Mongoid::Document
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks

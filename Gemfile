@@ -78,5 +78,3 @@ gem 'will_paginate_mongoid'
 gem 'elasticsearch-rails'
 
 gem 'elasticsearch-model'
-
-gem 'react-rails'
