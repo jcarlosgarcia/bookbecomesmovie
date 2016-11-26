@@ -1,0 +1,56 @@
+<!-- Left Sidebar -->
+<section id="left-sidebar">
+
+<div class="logo">
+  <a href="/" class="link-scroll" data-no-turbolink><img src="/assets/other_images/logo.png" alt="Twilli Air"></a>
+</div><!-- .logo -->
+
+<!-- Menu Icon for smaller viewports -->
+<div id="mobile-menu-icon" class="visible-xs" onClick="toggle_main_menu();"><span class="glyphicon glyphicon-th"></span></div>
+
+<ul id="main-menu">
+  <li id="menu-item-text" class="menu-item scroll"><%= link_to "What can I do?", root_path(:anchor => "text") %></li>
+  <li id="menu-item-grid" class="menu-item scroll"><%= link_to "First steps", root_path(:anchor => "grid") %></li>
+  <li id="menu-item-carousel" class="menu-item scroll"><%= link_to "Examples", root_path(:anchor => "carousel") %></li>
+  <li id="menu-item-featured" class="menu-item scroll"><%= link_to "Featured", root_path(:anchor => "featured") %></li>
+  <li id="menu-item-signin" class="menu-item scroll"><%= link_to "Sign in", root_path(:anchor => "signin") %></li>
+  <li id="menu-item-signup" class="menu-item scroll"><%= link_to "Sign up", root_path(:anchor => "signup") %></li>
+  <li id="menu-item-books" class="menu-item scroll"><%= link_to "Books", root_path(:anchor => "books") %></li>
+  <li id="menu-item-authors" class="menu-item scroll"><%= link_to "Authors", root_path(:anchor => "authors") %></li>
+</ul><!-- #main-menu -->
+
+<p id="notice"><%= notice %></p>
+
+</section><!-- #left-sidebar -->
+
+<div id="main-content" class="clearfix">
+  <article class="section-wrapper">
+    <div class="content-wrapper-search clearfix">
+      <h1 class="section-title">Books</h1>
+      <div class="col-sm-7 col-md-9">    
+        <div class="col-md-12">               
+          <div class="form-group-search ">
+            <ul id="books_item">
+              <% @books.each do |book| %>
+                <li class="col-md-12">
+                  <div class="col-md-1">
+                    <% if book.imagebook && book.imagebook.include?("cloudinary") %>
+                      <img src="<%= book.imagebook %>" width="50px">
+                    <% else %>
+                      <img src="/assets/other_images/nobookimage.png" width="50px">
+                    <% end %>
+                  </div>
+                  <div class="col-md-11 text-content" data-id="547cca928e9cfc088a7f3a5e">
+                    <b><%= link_to book.title, book_path(book.id)%></b>
+                    <p><% if book.description2.length > 10 %><%= book.description2.html_safe %><% end %></p>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>   
+      </div>
+    </div>
+  </article>
+</div>
+

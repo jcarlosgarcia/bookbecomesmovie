@@ -7,31 +7,6 @@ class BooksController < ApplicationController
     @books = Book.all.limit(200)
   end
 
-  # GET /books/search
-  def search
-    if defined? params[:letter]
-      letter = params[:letter][0]
-    else
-      letter = 'A'
-    end
-    @page_number = 1
-    @num_books = Book.count()
-
-    begin
-      @page_number = params[:page].to_i unless params[:page].blank?
-      last_page = (@num_books / BBM::MAX_PAGE_ITEMS) + 1
-      if @page_number <= 0
-        @page_number = 1
-      elsif @page_number > last_page
-        @page_number = last_page
-      end
-    rescue
-      logger.error "Page number not valid!"
-    end
-
-    @books = Book.where(title: /^#{letter}/i).without(:created, :last_modified, :latest_revision, :revision).asc(:title).skip((@page_number-1) * BBM::MAX_PAGE_ITEMS).limit(BBM::MAX_PAGE_ITEMS)
-  end
-
   # GET /books/1
   def show
   end
@@ -69,6 +44,19 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     redirect_to books_url, notice: 'Book was successfully destroyed.'
+  end
+
+  # GET /books/search
+  def search    
+    if params[:q].nil?
+      @books = []
+    else
+      @books = Book.search params[:q]
+    end  
+    respond_to do |format|
+      format.html
+      format.json { render json: @books }
+    end
   end
 
   private

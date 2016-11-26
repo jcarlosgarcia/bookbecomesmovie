@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.3.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.7.1'
 gem 'rake', '10.4.2'
 
 # Bundle edge Rails instead:
@@ -11,7 +11,7 @@ gem 'rake', '10.4.2'
 #gem 'sqlite3'
 
 #gema para conexion a mongodb
-gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
+gem 'mongoid', '~> 5.1.0'
 
 gem 'simple_captcha2', require: 'simple_captcha'
 
@@ -61,7 +61,7 @@ gem 'therubyracer'
 gem 'execjs'
 
 gem 'ckeditor'
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+#gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
 gem 'cloudinary'
 
@@ -74,3 +74,7 @@ gem 'newrelic_rpm'
 gem 'rails_12factor'
 
 gem 'will_paginate_mongoid'
+
+gem 'elasticsearch-rails'
+
+gem 'elasticsearch-model'

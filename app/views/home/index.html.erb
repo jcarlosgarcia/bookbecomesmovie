@@ -5,7 +5,7 @@
       <section id="left-sidebar">
 
         <div class="logo">
-          <a href="#intro" class="link-scroll"><img src="/assets/other_images/logo.png" alt="Twilli Air"></a>
+          <a href="#intro" class="link-scroll" data-no-turbolink><img src="/assets/other_images/logo.png" alt="Twilli Air"></a>
         </div><!-- .logo -->
 
         <!-- Menu Icon for smaller viewports -->
@@ -18,8 +18,8 @@
           <li id="menu-item-featured" class="menu-item scroll"><a href="#featured">Featured</a></li>
           <li id="menu-item-signin" class="menu-item scroll"><a href="#signin">Sign in</a></li>
           <li id="menu-item-signup" class="menu-item scroll"><a href="#signup">Sign up</a></li>
-          <li id="" class="menu-item scroll"><a href="/books" data-no-turbolink>Books</a></li>
-          <li id="" class="menu-item scroll"><a href="/authors" data-no-turbolink>Authors</a></li>
+          <li id="menu-item-books" class="menu-item scroll"><a href="#books">Books</a></li>
+          <li id="menu-item-authors" class="menu-item scroll"><a href="#authors" data-no-turbolink>Authors</a></li>
         </ul><!-- #main-menu -->
 
       </section><!-- #left-sidebar -->
@@ -32,7 +32,7 @@
             <div class="col-sm-10 col-md-9 pull-right">
 
                 <section class="feature-text">
-                  <h1>... I'd bet it'd be a great movie!!!</h1>
+                  <h1>... I bet it'd make a great movie!!!</h1>
                   <p>You really have to read this book... How often have you heard this saying?. We guess sometimes. We would like you to take a step forward, we would like you to watch the movie you want, you can contribute to achieve your desires!.</p>
                   <p><a href="#text" class="link-scroll btn btn-outline-inverse btn-lg">Would you like to know more?</a></p>
                 </section>
@@ -47,7 +47,7 @@
 
                 <h1 class="section-title">You have only to follow a few simple steps</h1>
 
-                <p class="feature-paragraph "><img data-img-src="/assets/other_images/transp-image5b.png" class="lazy pull-right" alt="Lorem Ipsum">In our main left menu have a link "Find the book"... but wait!, read a bit more... we need you sign up (have you already done it?, great, if you haven't already do sign in <a href="#signin">here</a> or sign up quickly and easily with us <a href="#signup">here</a>).</p>
+                <p class="feature-paragraph "><img data-img-src="/assets/other_images/transp-image5b.png" class="lazy pull-right" alt="Lorem Ipsum">In our main menu, on the left, you have a link "books"... but wait!, read a bit more... we need you to sign up (have you already done it?, great, if you haven't please do sign in <a href="#signin">here</a> or sign up quickly and easily with us <a href="#signup">here</a>).</p>
                 <h4>Are you ready for our challenge?</h4>
                 <p>Choose one book, select the best actors, and book will become movie!</p>
                 <p><a href="" onclick="populate_and_open_modal(event, 'modal-content-1');" class="btn btn-outline-inverse btn-sm">Would you like to know more?</a></p>
@@ -370,12 +370,9 @@
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
 
-         <article id="signup" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg4.jpg">
+        <article id="signup" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg9.jpg">
           <div class="content-wrapper clearfix">
-
               <h1 class="section-title">Sign up</h1>
-
-
                 <!-- CONTACT FORM -->
                 <div class="col-sm-7 col-md-9">
                   <!-- IMPORTANT: change the email address at the top of the assets/php/mail.php file to the email address that you want this form to send to -->
@@ -414,6 +411,144 @@
                   </form>
                 </div><!-- end: CONTACT FORM -->
 
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+
+        <article id="books" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg7.jpg">
+          <div class="content-wrapper-search clearfix">
+            <h1 class="section-title">Books</h1>
+            <div class="col-sm-7 col-md-9">
+              <%= form_tag(:search_books, :method=>'get', :multipart => true) do %>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="book_search text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Full Name" name="q" autocomplete="false">
+                  </div>
+                  <div class="form-group">
+                    <img src="/assets/theme_images/loader-form.GIF" class="form-loader">
+                    <button type="submit" class="btn btn-sm btn-outline-inverse">Submit</button>
+                  </div>  
+                </div> 
+                <div class="col-md-12">               
+                  <div class="form-group-search ">
+                    <div class="form-group form-general-error-container" id="books_search"></div>
+                  </div>
+                </div>                
+              <% end %>
+              <script>
+                var setLength=130;
+                function truncateString(string, limit, breakChar, rightPad) {
+
+                   if (string == null) return '';
+
+                   if (string.length <= limit) return string;
+
+                   var substr = string.substr(0, limit);
+                   if ((breakPoint = substr.lastIndexOf(breakChar)) >= 0) 
+                      {
+                       if (breakPoint < string.length -1) {
+                           return string.substr(0, breakPoint) + rightPad;
+                          }
+                      }
+                }
+                $('.book_search').keyup(function(){
+                var q = $(this).val();
+                  if (q.length>2 || q.length==0){
+                    $.ajax({
+                      type: "GET",
+                      url: "/books/search.json",
+                      dataType: "json",
+                      data: {'q': q},
+                      success:function(result){                        
+                          $("#books_item").remove();
+                          $("#books_search").after('<ul id="books_item"></ul>');
+                          render = true;
+                          $("#books_item").on("click", "div", function(){
+                            window.location.href='/books/' + $(this).data('id');
+                            return false;
+                          });
+                          /*$("#books_item").on("click", "div", function(){
+                            $("#book_id").val($(this).data('id'));
+                            $(".book_search").val($(this).text());
+                            $("#books_item").remove();
+                          });*/
+                        for(term in result){
+                        render = false;
+                          if (result[term]._source.imagebook != null && result[term]._source.imagebook.indexOf("cloudinary") != -1) {
+                            $("#books_item").append("<li class=\"col-md-12\"><div class=\"col-md-1\"><img src=\"" + result[term]._source.imagebook + "\" width=\"50px\"></div><div class=\"col-md-11 text-content title\" data-id="+result[term]._id+"><b>" + result[term]._source.title + "</b><p>" + truncateString(result[term]._source.description2, setLength, ' ', '...') + "</p></div></li>");
+                          } else {
+                            $("#books_item").append("<li class=\"col-md-12\"><div class=\"col-md-1\"><img src=\"/assets/other_images/nobookimage.png\" width=\"50px\"></div><div class=\"col-md-11 text-content title\" data-id="+result[term]._id+"><b>" + result[term]._source.title + "</b><p>" + truncateString(result[term]._source.description2, setLength, ' ', '...') + "</p></div></li>");
+                          }
+                        }
+                      }
+                    })   
+                  }             
+                });
+              </script>
+    
+            </div><!-- end: CONTACT FORM -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+
+        <article id="authors" class="section-wrapper clearfix" data-custom-background-img="/assets/other_images/bg8.jpg">
+          <div class="content-wrapper-search clearfix">
+            <h1 class="section-title">Authors</h1>
+            <div class="col-sm-7 col-md-9">
+              <%= form_tag(:search_authors, :method=>'get', :multipart => true) do %>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="author_search text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Full Name" name="q" autocomplete="false">
+                  </div>
+                  <div class="form-group">
+                    <img src="/assets/theme_images/loader-form.GIF" class="form-loader">
+                    <button type="submit" class="btn btn-sm btn-outline-inverse">Submit</button>
+                  </div>  
+                </div> 
+                <div class="col-md-12">               
+                  <div class="form-group-search ">
+                    <div class="form-group form-general-error-container" id="authors_search"></div>
+                  </div>
+                </div>                
+              <% end %>
+              <script>
+                $('.author_search').keyup(function(){
+                var q = $(this).val();
+                  if (q.length>2 || q.length==0){
+                    $.ajax({
+                      type: "GET",
+                      url: "/authors/search.json",
+                      dataType: "json",
+                      data: {'q': q},
+                      success:function(result){                        
+                          $("#authors_item").remove();
+                          $("#authors_search").after('<ul id="authors_item"></ul>');
+                          render = true;
+                          $("#authors_item").on("click", "div", function(){
+                            window.location.href='/authors/' + $(this).data('id');
+                            return false;
+                          });
+                          /*$("#authors_item").on("click", "div", function(){
+                            $("#book_id").val($(this).data('id'));
+                            $(".book_search").val($(this).text());
+                            $("#authors_item").remove();
+                          });*/
+                        for(term in result){
+                          render = false;
+                          bio_author = '';
+                          if (result[term]._source.bio!=null) { bio_author = truncateString(result[term]._source.bio["value"], setLength, ' ', '...')};
+                          
+                          if (result[term]._source.imageauthor != null && result[term]._source.imageauthor.indexOf("cloudinary") != -1) {
+                            $("#authors_item").append("<li class=\"col-md-12\"><div class=\"col-md-1\"><img src=\"" + result[term]._source.imageauthor + "\" width=\"50px\"></div><div class=\"col-md-11 text-content title\" data-id="+result[term]._id+"><b>" + result[term]._source.name + "</b><p>" + bio_author + "</p></div></li>");
+                          } else {
+                            $("#authors_item").append("<li class=\"col-md-12\"><div class=\"col-md-1\"><img src=\"/assets/other_images/nobookimage.png\" width=\"50px\"></div><div class=\"col-md-11 text-content title\" data-id="+result[term]._id+"><b>" + result[term]._source.name + "</b><p>" + bio_author + "</p></div></li>");
+                          }
+                        }
+                      }
+                    })   
+                  }             
+                });
+              </script>
+    
+            </div><!-- end: CONTACT FORM -->
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
 
