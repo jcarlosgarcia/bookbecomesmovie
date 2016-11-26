@@ -12,6 +12,7 @@ gem 'rake', '10.4.2'
 
 #gema para conexion a mongodb
 gem 'mongoid', '~> 5.1.0'
+gem 'mongoid-slug'
 
 gem 'simple_captcha2', require: 'simple_captcha'
 
@@ -42,7 +43,7 @@ gem 'jquery-rails'
 #gem 'jquery-datatables-rails', '~> 2.2.3'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt' 
+gem 'bcrypt'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
