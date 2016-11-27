@@ -59,6 +59,15 @@ class AuthorsController < ApplicationController
     end
   end
 
+  # GET /books/search
+  def search
+    if params[:q].nil?
+      @authors = []
+    else
+      @authors = Author.search params[:q]
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_author

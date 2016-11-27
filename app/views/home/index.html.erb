@@ -439,7 +439,7 @@
                 function truncateString(string, limit, breakChar, rightPad) {
 
                    if (string == null) return '';
-
+                   
                    if (string.length <= limit) return string;
 
                    var substr = string.substr(0, limit);
@@ -472,7 +472,7 @@
                             $("#books_item").remove();
                           });*/
                         for(term in result){
-                        render = false;
+                          render = false;
                           if (result[term]._source.imagebook != null && result[term]._source.imagebook.indexOf("cloudinary") != -1) {
                             $("#books_item").append("<li class=\"col-md-12\"><div class=\"col-md-1\"><img src=\"" + result[term]._source.imagebook + "\" width=\"50px\"></div><div class=\"col-md-11 text-content title\" data-id="+result[term]._id+"><b>" + result[term]._source.title + "</b><p>" + truncateString(result[term]._source.description2, setLength, ' ', '...') + "</p></div></li>");
                           } else {
@@ -497,8 +497,6 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <input type="text" class="author_search text-field form-control validate-field required" data-validation-type="string" id="form-name" placeholder="Full Name" name="q" autocomplete="false">
-                  </div>
-                  <div class="form-group">
                     <img src="/assets/theme_images/loader-form.GIF" class="form-loader">
                     <button type="submit" class="btn btn-sm btn-outline-inverse">Submit</button>
                   </div>  
@@ -553,10 +551,3 @@
         </article><!-- .section-wrapper -->
 
       </section><!-- #main-content -->
-
-     
-
-
-
-
-
